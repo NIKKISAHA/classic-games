@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Space Invaders — Simple JS</title>
+  <link rel="stylesheet" href="space-invaders.css">
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <h1>Space Invaders</h1>
+      <div class="hud">
+        <div class="panel">Score: <span id="score">0</span></div>
+        <div class="panel">Lives: <span id="lives">3</span></div>
+        <div class="panel">Wave: <span id="wave">1</span></div>
+      </div>
+    </div>
+
+    <canvas id="game" width="800" height="520"></canvas>
+
+    <div class="controls">
+      <button id="start" class="btn">Start / Restart</button>
+      <button id="pause" class="btn small">Pause (P)</button>
+      <div style="flex:1"></div>
+      <div style="font-size:13px">Controls: ← → or A/D — Shoot: Space</div>
+    </div>
+
+    <div class="touch" aria-hidden="true">
+      <button id="left-touch">◀</button>
+      <button id="shoot-touch">●</button>
+      <button id="right-touch">▶</button>
+    </div>
+
+    
+  </div>
+
+  <script src="space-invaders.js"></script>
+</body>
+</html>

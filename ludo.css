@@ -1,0 +1,136 @@
+:root{
+  --bg:#071022;
+  --panel:#0f1724;
+  --accent:#38bdf8;
+  --white:#eef6ff;
+  --size:640px; /* board container size */
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: linear-gradient(180deg,#071022 0%, #0b1220 100%);
+  color: var(--white);
+  font-family: Inter, "Poppins", system-ui, -apple-system, sans-serif;
+  padding:24px;
+}
+
+.app{
+  width: min(980px, 96vw);
+  text-align:center;
+}
+
+h1{ color:var(--accent); margin:8px 0 18px; letter-spacing:1px; }
+
+.board-area{
+  display:flex;
+  gap:18px;
+  justify-content:center;
+  align-items:flex-start;
+  margin-bottom:16px;
+}
+
+/* board container (absolute-positioning inside) */
+.board{
+  width: var(--size);
+  height: var(--size);
+  background: rgba(255,255,255,0.02);
+  border-radius:12px;
+  position: relative;
+  margin: 0 auto;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.6), inset 0 0 40px rgba(56,189,248,0.02);
+  overflow: visible;
+}
+
+/* track & home cells */
+.cell {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  border-radius:6px;
+  background: #f8fafc;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;
+  color:#061322;
+  transform: translate(-50%,-50%);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* safe / start cells */
+.cell.safe { outline: 3px solid rgba(0,0,0,0.06); }
+
+/* home color variants */
+.cell.home-red { background:#fee2e2; border: 2px solid #ef4444; }
+.cell.home-green { background:#dcfce7; border: 2px solid #16a34a; }
+.cell.home-yellow { background:#fffbeb; border: 2px solid #d97706; }
+.cell.home-blue { background:#dbeafe; border: 2px solid #2563eb; }
+
+/* center finish */
+.cell.center {
+  width: 54px; height: 54px; border-radius:8px;
+  font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+  background: linear-gradient(180deg, rgba(56,189,248,0.08), rgba(2,6,23,0.08));
+  color:var(--accent);
+  transform: translate(-50%,-50%);
+  box-shadow: 0 6px 18px rgba(2,6,23,0.5);
+}
+
+/* tokens */
+.token {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-radius:50%;
+  border: 2px solid rgba(0,0,0,0.18);
+  display:flex; align-items:center; justify-content:center;
+  font-size:12px; color:#061322;
+  transform: translate(-50%,-50%);
+  transition: left 300ms cubic-bezier(.2,.9,.2,1), top 300ms cubic-bezier(.2,.9,.2,1), transform 160ms;
+  z-index:120;
+  cursor:pointer;
+  box-shadow: 0 8px 22px rgba(2,6,23,0.45);
+}
+.token.red { background:#ef4444; }
+.token.green { background:#16a34a; }
+.token.yellow { background:#d97706; }
+.token.blue { background:#2563eb; }
+
+.token.movable {
+  outline: 4px solid rgba(56,189,248,0.16);
+  transform: translate(-50%,-50%) scale(1.08);
+}
+
+/* optional base blocks beside board */
+.base { width:120px; height:120px; border-radius:8px; background: rgba(255,255,255,0.02); display:none; }
+.base-red { border: 3px solid rgba(239,68,68,0.12); }
+.base-green { border: 3px solid rgba(22,163,74,0.12); }
+.base-yellow { border: 3px solid rgba(217,119,6,0.12); }
+.base-blue { border: 3px solid rgba(37,99,235,0.12); }
+
+/* controls / dice */
+.controls { display:flex; gap:18px; align-items:center; justify-content:center; margin-top:6px; flex-wrap:wrap; }
+.dice-box { display:flex; flex-direction:column; align-items:center; gap:8px; }
+.dice {
+  width:52px; height:52px; border-radius:10px; background:#fff; color:#061322;
+  display:flex; align-items:center; justify-content:center; font-weight:700; font-size:18px;
+  box-shadow: 0 8px 22px rgba(2,6,23,0.5);
+}
+button#rollBtn { background:var(--accent); border:0; color:#061322; padding:8px 12px; border-radius:8px; cursor:pointer; font-weight:700; }
+.info { color:#cbd5e1; font-size:14px; text-align:left; }
+.msg { color:#bdefff; min-height:20px; margin-top:6px; }
+
+/* small text */
+.hint { color:#94a3b8; margin-top:12px; font-size:13px; }
+
+/* responsive */
+@media (max-width:980px){
+  .board-area{ flex-direction:column; }
+  .base { display:none; }
+}

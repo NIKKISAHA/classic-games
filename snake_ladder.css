@@ -1,0 +1,290 @@
+/* --- 1. LIGHT THEME (DEFAULT) VARIABLES --- */
+:root {
+    --bg-main: #f0f4f8; /* Light Page Background */
+    --container-bg: #ffffff; /* White Container Background */
+    --text-color: #333;
+    --border-color: #666;
+    
+    --board-bg: #f0f8ff; /* Alice Blue Board */
+    --square-odd: #e0f0ff; /* Light Square 1 */
+    --square-even: #c0e0ff; /* Light Square 2 */
+    
+    --player2-button: #3b82f6; /* Blue for buttons/title */
+
+    --player1-color: #ef4444; /* Red */
+    --player2-color: #3b82f6; /* Blue */
+    --snake-color: #a00000; /* Deep Red Snake */
+    --ladder-color: #007700; /* Deep Green Ladder */
+}
+
+/* --- 2. DARK THEME VARIABLES (Override when body has class .dark-mode) --- */
+.dark-mode {
+    --bg-main: #0d0d0d;
+    --container-bg: #181818;
+    --text-color: #f0f0f0; 
+    --border-color: #444;
+
+    --board-bg: #1c1c1c; 
+    --square-odd: #2c2c2c; 
+    --square-even: #1f1f1f;
+    
+    --player2-button: #5d9dff; /* Brighter blue for buttons */
+
+    --player1-color: #f75d5d; /* Brighter Red */
+    --player2-color: #5d9dff; /* Brighter Blue */
+    --snake-color: #ff3333; /* Vivid Red Snake */
+    --ladder-color: #00cc00; /* Vivid Green Ladder */
+}
+
+/* --- 3. BASE STYLES --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    /* Use the main background variable */
+    background: var(--bg-main); 
+    color: var(--text-color);
+    padding: 20px;
+    transition: background 0.5s; /* Smooth transition */
+}
+
+.game-container {
+    /* Use container background variable */
+    background: var(--container-bg);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    padding: 30px;
+    text-align: center;
+    width: 100%;
+    max-width: 650px; 
+    transition: background 0.5s;
+}
+
+h1 {
+    color: var(--player2-button);
+    margin-bottom: 25px;
+    font-size: 2.5em;
+}
+
+.game-info {
+    margin-bottom: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.1em;
+}
+
+.game-info p {
+    margin: 0;
+    font-weight: 500;
+}
+
+#roll-dice, #reset-game, #play-again, #theme-toggle {
+    background: var(--player2-button);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#roll-dice:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+.dark-mode #roll-dice:disabled {
+    background: #444; /* Darker disabled state for dark mode */
+}
+
+
+/* --- 4. BOARD STYLES --- */
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr); 
+    grid-template-rows: repeat(10, 1fr);
+    width: min(550px, 90vw);
+    height: min(550px, 90vw);
+    margin: 25px auto;
+    border: 3px solid var(--border-color);
+    background: var(--board-bg);
+    position: relative; 
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.05);
+}
+
+.square {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(102, 102, 102, 0.2);
+    font-weight: bold;
+    color: var(--text-color);
+    font-size: 1.1em;
+    background-color: var(--square-even);
+    position: relative; 
+    z-index: 1; 
+}
+
+/* Adjust grid lines for dark mode */
+.dark-mode .square {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.square.odd-square {
+    background-color: var(--square-odd);
+}
+
+
+/* --- 5. SNAKE/LADDER VISUAL CUES --- */
+/* Ladder Start: Solid Green Fill (Base of the ladder) */
+.square.ladder-start {
+    background-color: var(--ladder-color); 
+    color: white; 
+    font-weight: 700;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.dark-mode .square.ladder-start {
+    color: black; /* Black text for contrast on bright green in dark mode */
+}
+
+/* Snake Head: Solid Red Fill */
+.square.snake-head {
+    background-color: var(--snake-color); 
+    color: white; 
+    font-weight: 700;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Ladder End: Dashed Green Border (Top of the ladder) */
+.square.ladder-end {
+    border: 4px dashed var(--ladder-color);
+    background-color: var(--square-odd); 
+    color: var(--text-color);
+}
+
+/* Snake Tail: Dashed Red Border */
+.square.snake-tail {
+    border: 4px dashed var(--snake-color);
+    background-color: var(--square-odd); 
+    color: var(--text-color);
+}
+
+
+/* --- 6. TOKEN/MESSAGE STYLES --- */
+.player-token {
+    position: absolute;
+    z-index: 10; 
+    width: 25px; 
+    height: 25px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: all 0.5s ease-in-out; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 0.8em;
+    transform: translate(-50%, -50%); 
+}
+
+.dark-mode .player-token {
+    color: black; /* Dark number on bright tokens for contrast */
+}
+
+.player-token.p0 { background-color: var(--player1-color); }
+.player-token.p1 { background-color: var(--player2-color); }
+/* Add more player colors if needed */
+
+.message {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin: 15px 0;
+}
+
+#winner-message {
+    margin-top: 20px;
+    background: #e6ffed; 
+    border: 1px solid var(--ladder-color);
+    padding: 20px;
+    border-radius: 10px;
+    color: var(--ladder-color);
+}
+
+.dark-mode #winner-message {
+    background: #1f302b; 
+    color: var(--ladder-color);
+}
+
+.hidden {
+    display: none;
+}
+/* --- 7. MOBILE/TABLET OPTIMIZATIONS --- */
+@media (max-width: 650px) {
+
+    /* Reduce padding and margin on small screens for more space */
+    body {
+        padding: 10px;
+        /* Aligns content to the top on small screens to prevent centering off-viewport */
+        align-items: flex-start; 
+    }
+    
+    .game-container {
+        padding: 20px 15px;
+        /* Ensure it never gets wider than the viewport */
+        max-width: 95vw; 
+    }
+
+    h1 {
+        font-size: 2em; /* Smaller title */
+        margin-bottom: 20px;
+    }
+
+    /* Wrap the game info (score, turn, dice) vertically if needed */
+    .game-info {
+        flex-direction: column;
+        gap: 10px;
+        font-size: 1em;
+        margin-bottom: 20px;
+    }
+
+    /* Button adjustments for better tapping */
+    #roll-dice, #reset-game, #play-again, #theme-toggle {
+        padding: 10px 18px;
+        font-size: 1em;
+        width: 100%; /* Make buttons full width for easy tapping */
+        max-width: 300px;
+    }
+    
+    /* Crucial: Ensure the board scales down correctly */
+    #game-board {
+        /* This is already good: uses min(550px, 90vw) */
+        width: 90vw; 
+        height: 90vw;
+        margin: 20px auto;
+    }
+
+    /* Make the player tokens slightly smaller on mobile */
+    .player-token {
+        width: 20px; 
+        height: 20px;
+        font-size: 0.7em;
+        border-width: 1px;
+    }
+
+    /* Make the square numbers slightly smaller */
+    .square {
+        font-size: 0.9em;
+    }
+}

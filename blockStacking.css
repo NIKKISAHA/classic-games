@@ -1,0 +1,161 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #111;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.game-container {
+  text-align: center;
+}
+
+.game-board {
+  width: 360px;
+  height: 720px;
+  background: #222;
+  display: grid;
+  grid-template-rows: repeat(20, 36px);
+  grid-template-columns: repeat(10, 36px);
+  gap: 2px;
+  margin: 0 auto;
+  border: 3px solid #555;
+}
+
+.cell {
+  width: 36px;
+  height: 36px;
+  background: #333;
+  border-radius: 4px;
+}
+
+.hud {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 18px;
+}
+
+.controls {
+  margin-top: 16px;
+  font-size: 16px;
+}
+
+/* --- Modal Styles (NEW) --- */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Dark, blurred effect */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #1f2833;
+  color: #e3f2fd;
+  padding: 30px 40px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.9);
+  border: 2px solid #66b3ff;
+}
+
+.modal-content h2 {
+  color: #ff66ff;
+  font-size: 36px;
+  margin-top: 0;
+}
+
+#restart-button {
+  padding: 10px 20px;
+  margin-top: 20px;
+  font-size: 18px;
+  background-color: #66b3ff;
+  color: #1f2833;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#restart-button:hover {
+  background-color: #4da6ff;
+}
+
+.hidden {
+  display: none;
+}
+/* --- Mobile / Tablet Responsiveness --- */
+@media (max-width: 768px) {
+  .game-board {
+    width: 90vw; /* make board fit screen width */
+    height: calc(90vw * 2); /* maintain approx 2:1 height ratio */
+    grid-template-rows: repeat(20, calc(90vw / 10)); /* 20 rows scaled */
+    grid-template-columns: repeat(10, 1fr);
+    gap: 1px;
+  }
+
+  .cell {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hud {
+    width: 90vw;
+    font-size: 16px;
+  }
+
+  .controls {
+    font-size: 14px;
+  }
+
+  .modal-content {
+    width: 90vw;
+    padding: 20px;
+  }
+
+  .modal-content h2 {
+    font-size: 24px;
+  }
+
+  #restart-button {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-board {
+    height: calc(90vw * 2.2); /* slightly taller for very small screens */
+    gap: 0.5px;
+  }
+
+  .hud {
+    font-size: 14px;
+  }
+
+  .controls {
+    font-size: 12px;
+  }
+
+  .modal-content h2 {
+    font-size: 20px;
+  }
+
+  #restart-button {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+}

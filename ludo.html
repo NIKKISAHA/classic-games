@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ludo — Working Prototype</title>
+  <link rel="stylesheet" href="ludo.css" />
+</head>
+<body>
+  <div class="app">
+    <h1>LUDO</h1>
+
+    <div class="board-area">
+      <div id="board" class="board"></div>
+
+      <div class="bases">
+        <div class="base base-red" id="base-red"></div>
+        <div class="base base-green" id="base-green"></div>
+        <div class="base base-yellow" id="base-yellow"></div>
+        <div class="base base-blue" id="base-blue"></div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="dice-box">
+        <div id="dice" class="dice">-</div>
+        <button id="rollBtn">Roll Dice</button>
+      </div>
+
+      <div class="info">
+        <div>Current Player: <span id="currentPlayer">Red</span></div>
+        <div>Dice Roll: <span id="diceValue">-</span></div>
+        <div id="msg" class="msg"></div>
+      </div>
+    </div>
+
+    <p class="hint">Flow: Click <b>Roll Dice</b>, then click a highlighted token to move. You get an extra turn on a 6!</p>
+  </div>
+  <script src="ludo.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Block Stacking Game</title>
+  <link rel="stylesheet" href="blockStacking.css">
+</head>
+<body>
+  <div class="game-container">
+    <h1>Block Stacking Game</h1>
+    <div class="game-board" id="board"></div>
+    <div class="hud">
+      <div>Score: <span id="score">0</span></div>
+      <div>Level: <span id="level">1</span></div>
+    </div>
+    <div class="controls">
+      <p>Controls: ← → (Move), ↑ (Rotate), ↓ (Fast Drop)</p>
+    </div>
+  </div>
+
+  <div id="gameOverModal" class="modal-overlay hidden">
+    <div class="modal-content">
+      <h2 id="modal-title">Game Over</h2>
+      <p>Your Final Score: <span id="final-score">0</span></p>
+      <button id="restart-button">Restart Game</button>
+    </div>
+  </div>
+  <script src="blockStacking.js"></script>
+</body>
+</html>

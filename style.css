@@ -1,0 +1,316 @@
+:root {
+    --bg-primary: #12182b;
+    --bg-secondary: #1a2235;
+    --text-color: #f0f4f8;
+    --accent-color: #55aaff;
+    --link-color: #c9d2ff;
+    --glow-color: rgba(85, 170, 255, 0.8);
+    --button-text-color: #f0f4f8;
+    --toggle-color: var(--text-color);
+}
+
+.light-theme {
+    --bg-primary: #f0f4f8;
+    --bg-secondary: #ffffff;
+    --text-color: #12182b;
+    --accent-color: #55aaff;
+    --link-color: #55aaff;
+    --glow-color: rgba(85, 170, 255, 0.8);
+    --button-text-color: #f0f4f8;
+    --toggle-color: #333;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Navigation Bar */
+.navbar {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    color: var(--accent-color);
+    font-size: 1.8em;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-brand:hover {
+    color: var(--text-color);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--text-color);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: none;
+    border: none;
+    color: var(--toggle-color);
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.theme-toggle .fa-sun,
+.light-theme .theme-toggle .fa-moon {
+    display: none;
+}
+
+.light-theme .theme-toggle .fa-sun {
+    display: inline;
+}
+
+
+/* Hero Section Styles */
+.hero-section {
+    text-align: center;
+    padding: 80px 20px 40px;
+    width: 90%;
+    max-width: 800px;
+}
+
+/* Animated Heading */
+.hero-section h1 {
+    font-size: 3.5em;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.line-1 {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 2s steps(20, end);
+}
+
+.line-2 {
+    animation: fadeIn 2s ease-in-out 2s forwards;
+    opacity: 0;
+}
+
+/* Animated Subheading */
+.animated-subheading {
+    font-size: 1.2em;
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out 3.5s forwards;
+}
+
+.button {
+    background-color: var(--accent-color);
+    color: var(--button-text-color);
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 20px;
+    display: inline-block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, text-shadow 0.3s ease;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px var(--glow-color);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+/* Game Card Grid Styles */
+.game-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 20px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.game-card {
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    padding: 30px 20px;
+    width: 200px;
+    /* height: 200px; */
+    text-decoration: none;
+    color: var(--text-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 200px var(--glow-color);
+}
+
+.game-logo {
+    font-size: 3.5rem;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    transition: color 0.3s ease, filter 0.3s ease;
+}
+.game-card:hover .game-logo {
+    color: var(--text-color);
+    filter: drop-shadow(0 0 10px var(--glow-color));
+}
+
+.game-card h3 {
+    margin: 0 0 10px;
+    font-size: 1.5em;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+.game-card:hover h3 {
+    color: var(--accent-color);
+}
+
+.game-card p {
+    font-size: 0.9em;
+    color: rgba(240, 244, 248, 0.7);
+    line-height: 1.4;
+    margin: 0;
+}
+.light-theme .game-card p {
+    color: rgba(18, 24, 43, 0.7);
+}
+
+/* New Section Styles */
+.page-section {
+    width: 100%;
+    max-width: 800px;
+    padding: 80px 20px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.page-section h2 {
+    font-size: 2.5em;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+}
+
+.about-section p, .contact-section p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-section a {
+    color: var(--text-color);
+    text-decoration: underline;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.contact-section a:hover {
+    color: var(--accent-color);
+}
+
+/* Keyframe Animations */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Existing styles from style.css ... */
+
+/* --- Media Queries for Mobile/Tablet Friendliness --- */
+
+/* Tablet Optimization (Max Width: 900px) */
+@media (max-width: 900px) {
+    /* Allow game cards to occupy two columns instead of three or more */
+    .game-container {
+        gap: 20px;
+        padding: 15px;
+    }
+    .game-card {
+        width: 45%; 
+        /* Max width added to prevent cards from getting too wide on larger tablets */
+        max-width: 350px; 
+    }
+
+    /* Adjust the hero heading size for tablets */
+    .hero-section h1 {
+        font-size: 3em;
+    }
+}
+
+/* Mobile Optimization (Max Width: 600px) */
+@media (max-width: 600px) {
+    /* Stack navigation items vertically */
+    .navbar {
+        flex-direction: column;
+        padding: 15px;
+    }
+    .nav-links {
+        margin-top: 15px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .nav-links li {
+        margin: 5px 0;
+    }
+
+    /* Adjust the hero heading size for mobile phones */
+    .hero-section h1 {
+        font-size: 2.2em;
+    }
+    .animated-subheading {
+        font-size: 1.1em;
+    }
+
+    /* Force game cards to stack vertically, taking full width */
+    .game-card {
+        width: 100%; 
+        max-width: 400px; /* Limits max width for a cleaner look on very wide phones */
+    }
+}

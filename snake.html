@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake</title>
+    <link rel="stylesheet" href="snake.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-container">
+        <h1>SNAKE</h1>
+        <div class="game-container">
+            <canvas id="gameCanvas" width="400" height="400"></canvas>
+            <div class="controls">
+                <div class="stats">
+                    Score: <span id="score">0</span>
+                </div>
+                <div class="difficulty-buttons">
+                    <button id="easyBtn" class="difficulty-btn">Easy</button>
+                    <button id="mediumBtn" class="difficulty-btn active">Medium</button>
+                    <button id="hardBtn" class="difficulty-btn">Hard</button>
+                </div>
+                <div class="buttons">
+                    <button id="wallModeBtn" class="toggle-btn active">Walls: OFF</button>
+                    <button id="restartBtn">Restart</button>
+                </div>
+            </div>
+        </div>
+        <div class="game-over-overlay" id="gameOverOverlay">
+            <div class="game-over-message" id="gameOverMessage">
+                <h2 id="finalScore"></h2>
+                <p>Click Restart to play again.</p>
+                <button id="gameOverRestartBtn">Restart</button>
+            </div>
+        </div>
+    </div>
+    <script src="snake.js"></script>
+</body>
+</html>
