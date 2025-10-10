@@ -304,13 +304,16 @@ body {
     .hero-section h1 {
         font-size: 2.2em;
     }
+    .line-1{
+        font-size: 60%;
+    }
     .animated-subheading {
         font-size: 1.1em;
     }
 
     /* Force game cards to stack vertically, taking full width */
     .game-card {
-        width: 100%; 
+        width: 80%; 
         max-width: 400px; /* Limits max width for a cleaner look on very wide phones */
     }
 }
