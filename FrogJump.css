@@ -1,0 +1,359 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    /* Light desert/sky background */
+    background-color: #12182b; 
+    font-family: 'Consolas', monospace; /* A classic retro font style */
+    color: #555555; 
+}
+
+#game {
+    width: 600px;
+    height: 35%;
+    /* Ground line: Thicker, more pronounced, and gray */
+    border-bottom: 5px solid #55aaff; 
+    position: relative;
+    overflow: hidden; 
+    background-color: #1a2235; /* White game area */
+    box-shadow: 0 5px 15px rgba(237, 197, 197, 0.142); /* Subtle container shadow */
+}
+
+/* --- Player (Dino) Styling --- */
+#dino {
+    width: 50px;
+    height: 40px;
+    background: #2ecc71;
+    position: absolute;
+    bottom: 0;
+    left: 50px;
+    border-radius: 50% 50% 45% 45%; /* Rounded body */
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    transition: bottom 0.2s;
+    border: 2px solid #27ae60;
+}
+
+/* Eyes as separate circles */
+#dino::before,
+#dino::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: white;
+    border-radius: 50%;
+    top: -12px; /* above body */
+    border: 2px solid #27ae60;
+}
+
+/* Left eye */
+#dino::before {
+    left: 5px;
+}
+
+/* Right eye */
+#dino::after {
+    right: 5px;
+}
+
+/* Pupils inside eyes */
+#dino .pupil-left {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: black;
+    border-radius: 50%;
+    /* /* top: 5px; */
+    left: 70%; 
+    z-index: 1;
+}
+#dino .pupil-right {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: black;
+    border-radius: 50%;
+    /* /* top: 5px; */
+    left: 30%; 
+    z-index: 1;
+}
+
+/* Frog legs */
+#dino .leg-left,
+#dino .leg-right {
+    position: absolute;
+    width: 15px;
+    height: 8px;
+    background: #27ae60;
+    border-radius: 50%;
+    bottom: -6px; /* below body */
+}
+
+/* Left leg */
+#dino .leg-left {
+    left: 5px;
+    transform: rotate(-20deg);
+}
+
+/* Right leg */
+#dino .leg-right {
+    right: 5px;
+    transform: rotate(20deg);
+}
+
+/* --- Jump Animation (Keeping your timing: 0.5s) --- */
+.jump {
+    animation: jump-animation 0.5s ease-out;
+}
+
+@keyframes jump-animation {
+    0% { bottom: 0; }
+    40% { bottom: 100px; } /* Max height of the jump (100px) */
+    70% { bottom: 100px; }
+    100% { bottom: 0; }
+}
+
+/* --- Obstacle (Rock) Styling --- */
+#cactus {
+    width: 30px; /* Wider and shorter like a boulder */
+    height: 20px;
+    background-color: #888888; /* Dark Gray for rock */
+    
+    /* Shape: Irregular, lumpy shape using border-radius */
+    border-radius: 50% 50% 10% 20%; 
+    
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    
+    /* Shadow and edge for depth */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4), inset 0 -3px 0 0 #666666; /* Inner shadow for a bottom edge */
+    
+    /* Animation: Keeping your timing (1.5s) */
+    animation: cactus-move 1.5s linear infinite; 
+}
+
+/* --- Second Rock Piece (Using ::before) --- */
+/* This adds complexity and makes it look like a pile of rocks */
+#cactus::before {
+    content: '';
+    position: absolute;
+    top: 5px; 
+    left: -10px; /* Position next to the main rock */
+    width: 20px;
+    height: 15px;
+    background-color: #777777; /* Slightly different shade of gray */
+    
+    /* Irregular shape for the second rock */
+    border-radius: 40% 30% 50% 40%;
+    
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* --- NO ::after element is needed for a simple rock formation --- */
+#cactus::after {
+    /* Ensure the cactus arms are completely removed */
+    content: none;
+}
+
+@keyframes cactus-move {
+    /* Keep your original range */
+    0% { right: -30px; } /* Adjust start position for the wider rock formation */
+    100% { right: 600px; } 
+}
+
+/* --- UI Elements --- */
+#score {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #888888; /* Soft gray for the score */
+    letter-spacing: 1px;
+}
+
+#game-over {
+    margin-top: 30px;
+    font-size: 2em;
+    color: #ff4444; /* Brighter, more alarming game over color */
+    font-weight: bold;
+    text-align: center;
+    /* Add a subtle drop shadow to the text */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); 
+    padding: 10px 20px;
+    border: 2px solid #ff4444;
+    background-color: #fff;
+}
+/* --- New Global Styles for Layout and Effects --- */
+
+/* Wrapper for blur effect on game area */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Takes full viewport height */
+    width: 100%;
+}
+
+/* Style to pause animation for both dino and cactus */
+.paused {
+    animation-play-state: paused !important;
+}
+
+/* Class to apply blur to the game area when modal is active */
+.game-area-blur {
+    filter: blur(5px);
+    pointer-events: none; /* Disables clicks on blurred elements */
+}
+
+/* --- Controls Bar Styles --- */
+#controls {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+#controls button, #game-over-modal button {
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #55aaff; /* Match your ground color for consistency */
+    color: #1a2235; /* Match your game background color */
+    transition: background-color 0.2s;
+}
+
+#controls button:hover, #game-over-modal button:hover {
+    background-color: #77cfff;
+}
+
+/* --- Game Over Modal Styles --- */
+.modal {
+    position: fixed; /* Stays in place over everything */
+    z-index: 20; /* High z-index to be on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black overlay */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Remove backdrop-filter if you want a simpler overlay without a true "blur everything" effect */
+    /* backdrop-filter: blur(5px); */ 
+}
+
+.modal-content {
+    background-color: #12182b;
+    color: #b1c4ef;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+    animation: pop-in 0.3s ease-out;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: #55aaff;
+}
+
+.modal-content p {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+@keyframes pop-in {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* --- New: Mobile Responsiveness Additions --- */
+
+/* Target screens smaller than 650px wide */
+
+@media (max-width: 650px) {
+    /* 1. Scale the main game area down */
+    #game {
+        /* Shrink the game area to 80% of its size. 
+           This keeps the dino, cactus, and collision logic intact. */
+        transform: scale(0.8); 
+        /* Ensure the scaled element stays visible and centered */
+        /* margin: 50px auto 0;  */
+    }
+
+    /* 2. Re-align the overall container to handle the scaling */
+    .container {
+        /* Change vertical alignment so elements start from the top, preventing vertical squash */
+        justify-content: flex-start;
+        padding-top: 20px;
+    }
+
+    /* 3. Stack the control buttons vertically for easy tapping */
+    #controls {
+        flex-direction: column;
+        width: 80%; 
+        align-items: center;
+    }
+
+    /* 4. Make buttons and modal text slightly smaller for very small screens */
+    #controls button, 
+    #game-over-modal button {
+        width: 100%; /* Make buttons full-width */
+        margin-bottom: 5px;
+        font-size: 0.9em;
+    }
+
+    /* 5. Scale down the modal slightly for better fit */
+    .modal-content {
+        transform: scale(0.9);
+        width: 80%;
+    }
+}
+
+@media (max-width: 500px) {
+    /* 1. Scale the main game area down */
+    #game {
+        /* Shrink the game area to 80% of its size. 
+           This keeps the dino, cactus, and collision logic intact. */
+        transform: scale(0.4); 
+        /* Ensure the scaled element stays visible and centered */
+        /* margin: 50px auto 0;  */
+    }
+
+    /* 2. Re-align the overall container to handle the scaling */
+    .container {
+        /* Change vertical alignment so elements start from the top, preventing vertical squash */
+        justify-content: flex-start;
+        padding-top: 20px;
+    }
+
+    /* 3. Stack the control buttons vertically for easy tapping */
+    #controls {
+        flex-direction: column;
+        width: 80%; 
+        align-items: center;
+    }
+
+    /* 4. Make buttons and modal text slightly smaller for very small screens */
+    #controls button, 
+    #game-over-modal button {
+        width: 100%; /* Make buttons full-width */
+        margin-bottom: 5px;
+        font-size: 0.9em;
+    }
+
+    /* 5. Scale down the modal slightly for better fit */
+    .modal-content {
+        transform: scale(0.9);
+        width: 80%;
+    }
+}
