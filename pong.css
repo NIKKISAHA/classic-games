@@ -1,0 +1,127 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #0b1221;
+    color: #55aaff;
+    font-family: Arial, sans-serif;
+    position: relative;
+}
+
+canvas {
+    border: 2px solid #4092e4;
+    background: linear-gradient(180deg,#071022,#0b1221);
+    display: block;
+     box-shadow: 0 0 10px #4092e4, 0 0 20px #4092e4;
+}
+
+/* Overlay */
+#overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    backdrop-filter: blur(5px);
+}
+
+#overlay-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background-color: rgba(0,0,0,0.8);
+    border: 4px solid #4092e4;
+    border-radius: 20px;
+    text-align: center;
+    animation: glowBorder 1.5s infinite alternate;
+}
+
+#overlay-text h2 {
+    font-size: 48px;
+    margin: 10px 0;
+}
+
+#overlay-text p {
+    font-size: 32px;
+    margin: 10px 0;
+}
+
+#restart-btn {
+    background-color: #55aaff;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    border: 2px solid #4092e4;
+    border-radius: 12px;
+    padding: 12px 30px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    margin-top: 20px;
+}
+
+#restart-btn:hover {
+    background-color: #4092e4;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+}
+
+/* Border glow animation */
+@keyframes glowBorder {
+    0% { box-shadow: 0 0 10px #4092e4, 0 0 20px #4092e4; }
+    50% { box-shadow: 0 0 20px #4092e4, 0 0 40px #4092e4; }
+    100% { box-shadow: 0 0 10px #4092e4, 0 0 20px #4092e4; }
+}
+
+h1{font-size: 3em;
+margin-bottom: 0%;}
+
+#mobile-controls {
+    display: none; /* only show on small screens */
+    margin-top: 20px;
+}
+
+#mobile-controls button {
+    background-color: #55aaff;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    border: 2px solid #4092e4;
+    border-radius: 12px;
+    padding: 12px 25px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+#mobile-controls button:hover {
+    background-color: #4092e4;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+}
+
+/* Show buttons on small screens */
+@media screen and (max-width: 768px) {
+    #mobile-controls {
+        display: flex;
+        justify-content: center;
+        width: 40%;
+        height: 8%;
+    }
+    canvas {
+        width: 90%;
+        height: auto;
+    }
+    
+}
