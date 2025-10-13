@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Vertical Endless Runner</title>
+  <link rel="stylesheet" href="SkyJumper.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Sky Jumper</h2>
+    <canvas id="gameCanvas" width="400" height="600"></canvas>
+    
+    <div id="gameOverlay" class="hidden-overlay">
+        <div id="popupContent" class="popup">
+            <h1 id="message"></h1>
+            <p>Final Score: <span id="finalScore">0</span> Coins</p>
+            <button id="restartBtnOverlay">Restart Game</button>
+        </div>
+    </div>
+    
+    <div id="mobileControls">
+        <button id="leftBtn" class="ctrl-btn">&lt;</button>
+        <button id="jumpBtn" class="ctrl-btn">●</button>
+        <button id="rightBtn" class="ctrl-btn">&gt;</button>
+    </div>
+
+    <button id="startBtn">Start Game</button>
+    
+    <p class="desktop-tip">Press <b>Space</b> or <b>Tap</b> to Jump | Use <b>Arrows</b> to Move</p>
+  </div>
+  <script src="SkyJumper.js"></script>
+</body>
+</html>
