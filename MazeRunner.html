@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maze Runner - Hardcore</title>
+<link rel="stylesheet" href="MazeRunner.css">
+</head>
+<body>
+    <h1>Maze Runner</h1>
+    <p>Level: <span id="level">1</span></p>
+    <p>Moves left: <span id="movesLeft">100</span></p>
+
+    <div id="maze-container">
+        <div id="maze"></div>
+    </div>
+
+    <p>Use arrow keys or buttons below to move the red player to the green exit!</p>
+
+    <!-- Mobile Buttons -->
+    <div id="mobile-controls">
+        <button id="up">↑</button>
+        <div>
+            <button id="left">←</button>
+            <button id="down">↓</button>
+            <button id="right">→</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="hidden">
+        <div id="modal-content">
+            <h2 id="modal-title">You Win!</h2>
+            <p id="modal-message">Great job!</p>
+            <button id="modal-button">Restart</button>
+        </div>
+    </div>
+
+    <!-- Level Display Overlay -->
+    <div id="level-display" class="hidden">
+        <h2>Level <span id="display-level">1</span></h2>
+    </div>
+
+<script src="MazeRunner.js"></script>
+</body>
+</html>
