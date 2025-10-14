@@ -13,7 +13,7 @@ let timeUp = false;
 let score = 0;
 let gameTime = 15; // seconds
 let timerInterval;
-const WIN_SCORE = 2; // set your win condition here
+const WIN_SCORE = 5; // set your win condition here
 
 // ---------------------
 // Utility Functions
@@ -119,3 +119,4 @@ restartBtn.addEventListener('click', () => {
 // Start Button
 // ---------------------
 startBtn.addEventListener('click', startGame);
+
