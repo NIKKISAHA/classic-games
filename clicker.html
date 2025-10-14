@@ -1,0 +1,38 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emoji Reaction Game</title>
+  <link rel="stylesheet" href="clicker.css">
+</head>
+<body>
+  <h1>Emoji Reaction Game</h1>
+  <p>Score: <span id="score">0</span></p>
+  <p>Time Left: <span id="time">3</span>s</p>
+  <p>Target Emoji: <span id="targetEmoji">❓</span></p>
+
+  <div class="emoji-grid">
+    <!-- 20 emojis placeholders -->
+    <div class="emoji"></div><div class="emoji"></div><div class="emoji"></div><div class="emoji"></div><div class="emoji"></div>
+    <div class="emoji"></div><div class="emoji"></div><div class="emoji"></div><div class="emoji"></div><div class="emoji"></div>
+    <div class="emoji"></div><div class="emoji"></div><div class="emoji"></div><div class="emoji"></div><div class="emoji"></div>
+    <div class="emoji"></div><div class="emoji"></div><div class="emoji"></div><div class="emoji"></div><div class="emoji"></div>
+  </div>
+
+  <button id="startBtn">Start Game</button>
+
+  <!-- Modal -->
+  <div id="gameModal" class="modal">
+    <div class="modal-content">
+      <h2 id="modalTitle">Game Over</h2>
+      <p id="modalScore">Score: 0</p>
+      <button id="restartBtn">Restart Game</button>
+    </div>
+  </div>
+
+  <script src="clicker.js"></script>
+</body>
+</html>
