@@ -1,0 +1,218 @@
+:root {
+  --bg-primary: #12182b;
+  --bg-secondary: #1a2235;
+  --text-color: #f0f4f8;
+  --accent-color: #55aaff;
+  --link-color: #c9d2ff;
+  --glow-color: rgba(85, 170, 255, 0.8);
+  --button-text-color: #f0f4f8;
+}
+
+/* Base styles */
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  text-align: center;
+  background: var(--bg-primary);
+  color: var(--text-color);
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: var(--accent-color);
+  text-shadow: 0 0 10px var(--glow-color);
+  margin-bottom: 10px;
+}
+
+p {
+  margin: 5px 0;
+  font-size: 1.2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 110px);
+  grid-gap: 20px;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.hole {
+  width: 110px;
+  height: 110px;
+  background: var(--bg-secondary);
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+  transition: transform 0.2s;
+}
+
+.hole:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px var(--glow-color);
+}
+
+.mole {
+  width: 90px;
+  height: 90px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 15px var(--glow-color);
+  animation: popUp 0.3s ease-out;
+}
+
+@keyframes popUp {
+  from { transform: translateY(50px) scale(0.5); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+button {
+  background: var(--accent-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 0 15px var(--glow-color);
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: var(--link-color);
+  transform: scale(1.05);
+  box-shadow: 0 0 25px var(--glow-color);
+}
+
+/* Modal overlay */
+.modal {
+  display: none; /* hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+/* Modal content box */
+.modal-content {
+  background: var(--bg-secondary);
+  color: var(--text-color);
+  padding: 30px 40px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 0 20px var(--glow-color);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.modal-content p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.modal-content button {
+  background: var(--accent-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 0 15px var(--glow-color);
+  transition: all 0.3s ease;
+}
+
+.modal-content button:hover {
+  background: var(--link-color);
+  transform: scale(1.05);
+  box-shadow: 0 0 25px var(--glow-color);
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: scale(0.8);}
+  to {opacity: 1; transform: scale(1);}
+}
+
+/* -------------------
+   Responsive Media Queries
+--------------------*/
+
+/* Tablets */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(3, 90px);
+    grid-gap: 15px;
+  }
+  .hole {
+    width: 90px;
+    height: 90px;
+  }
+  .mole {
+    width: 70px;
+    height: 70px;
+    top: 10px;
+    left: 10px;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  p {
+    font-size: 1rem;
+  }
+  button {
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
+}
+
+/* Mobile Phones */
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(3, 70px);
+    grid-gap: 10px;
+  }
+  .hole {
+    width: 70px;
+    height: 70px;
+  }
+  .mole {
+    width: 55px;
+    height: 55px;
+    top: 7px;
+    left: 7px;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  p {
+    font-size: 0.9rem;
+  }
+  button {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+  .modal-content {
+    padding: 20px 25px;
+  }
+}
