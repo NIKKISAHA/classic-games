@@ -1,0 +1,158 @@
+:root {
+    --bg-primary: #1e1e2f;
+    --card-back: #55aaff;
+    --card-face: #f0f4f8;
+    --matched-color: #2ecc71;
+    --text-color: #f0f4f8;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--bg-primary);
+    color: var(--text-color);
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+#game-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+#restart-btn {
+    padding: 8px 15px;
+    background: var(--card-back);
+    color: var(--text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+/* -------------------
+   Card Grid
+------------------- */
+
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns for a 4x4 grid */
+    gap: 10px;
+    width: 400px; /* Total width of the grid */
+    perspective: 800px; /* Adds 3D perspective to the container */
+}
+
+.card {
+    width: 100%;
+    padding-bottom: 100%; /* Makes the card a perfect square */
+    position: relative;
+    transform-style: preserve-3d; /* Allows the children (faces) to be 3D */
+    transition: transform 0.6s;
+    cursor: pointer;
+}
+
+.card.flip {
+    transform: rotateY(180deg);
+}
+
+.card.match {
+    /* Optional: Fades out or changes color when matched */
+    cursor: default;
+    opacity: 0.5;
+}
+
+/* Card Faces (Front and Back) */
+.card-face, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Crucial: hides the back side when not flipped */
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.card-back {
+    background: var(--card-back);
+    color: var(--text-color);
+    /* Add a subtle icon or pattern to the back */
+    content: '🃏'; 
+}
+
+.card-face {
+    background: var(--card-face);
+    color: var(--bg-primary);
+    transform: rotateY(180deg); /* Starts flipped face-down */
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 500px) {
+    #game-board, #game-controls {
+        width: 90vw; /* Use 90% of viewport width */
+    }
+}
+
+/* ... (Keep all your existing CSS styles) ... */
+
+/* NEW: Popup Styles */
+#popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85); /* Dark, slightly transparent overlay */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+#popup.hidden {
+    display: none;
+}
+
+#popup-content {
+    background: var(--bg-primary);
+    padding: 30px 40px;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid var(--card-back);
+    box-shadow: 0 0 20px var(--card-back);
+}
+
+#popup-title {
+    font-size: 2em;
+    margin-top: 0;
+}
+
+#popup-score {
+    font-size: 1.2em;
+    margin: 15px 0;
+}
+
+#popup-restart-btn {
+    padding: 10px 20px;
+    background: var(--card-back);
+    color: var(--text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+}
