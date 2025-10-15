@@ -1,0 +1,242 @@
+:root {
+    --bg-primary: #12182b;
+    --bg-secondary: #1a2235;
+    --text-color: #f0f4f8;
+    --accent-color: #55aaff;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--bg-primary);
+    color: var(--text-color);
+}
+
+h1 {
+    margin: 20px 0 10px 0;
+    text-shadow: 2px 2px #000;
+    font-size: 2em;
+    text-align: center;
+}
+
+#game {
+    position: relative;
+    width: 400px;
+    max-width: 95%;
+    height: 600px;
+    max-height: 90vh;
+    background: var(--bg-secondary);
+    overflow: hidden;
+    border: 2px solid var(--accent-color);
+    border-radius: 10px;
+}
+
+/* Bird */
+/* Bird */
+#bird {
+    position: absolute;
+    width: 35px;
+    height: 30px;
+    background: radial-gradient(circle at 30% 30%, #ffec6f, #ffaa33);
+    border-radius: 50%;
+    top: 50%;
+    left: 50px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    border: 2px solid #ffaa33;
+    transition: transform 0.1s ease;
+}
+
+/* Wings */
+#bird::before, #bird::after {
+    content: "";
+    position: absolute;
+    width: 13px;
+    height: 6px;
+    background: #ffaa33;
+    border-radius: 70%;
+    top: 10px;
+    animation: flap 0.5s infinite alternate;
+}
+
+#bird::before {
+    left: -5px;
+    transform: rotate(-30deg);
+}
+
+#bird::after {
+    right: -5px;
+    transform: rotate(30deg);
+}
+
+/* Beak */
+#bird::after {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 4px;
+    background: #ff5555;
+    top: 12px;
+    left: 100%;
+    border-radius: 2px;
+    transform: rotate(20deg);
+}
+
+/* Wing flap animation */
+@keyframes flap {
+    0% { transform: rotate(30deg) translateY(0); }
+    100% { transform: rotate(30deg) translateY(-3px); }
+}
+
+
+/* Pipes */
+.pipe {
+    position: absolute;
+    width: 60px;
+    background: green;
+}
+
+/* Coins */
+.coin {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: gold;
+    border-radius: 50%;
+    border: 2px solid orange;
+    z-index: 5;
+}
+
+/* Score display */
+#score {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--text-color);
+    text-shadow: 1px 1px #000;
+}
+
+/* Jump button */
+#jumpButton {
+    display: none; /* hidden by default, only for mobile/tablet */
+}
+
+/* Popup styles */
+#popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(18, 24, 43, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#popup.hidden {
+    display: none;
+}
+
+#popupContent {
+    background: var(--bg-secondary);
+    padding: 30px 40px;
+    border-radius: 10px;
+    text-align: center;
+    color: var(--text-color);
+    box-shadow: 0 0 20px var(--accent-color);
+}
+
+#popupContent button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background: var(--accent-color);
+    border: none;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* -------------------
+   Responsive Design
+------------------- */
+
+/* Mobile & Tablet */
+@media (max-width: 1024px) {
+
+    #game {
+        width: 90%;
+        height: 70vh;
+    }
+
+    #bird {
+        width: 20px;
+        height: 20px;
+        left: 40px;
+    }
+
+    .pipe {
+        width: 40px;
+    }
+
+    .coin {
+        width: 15px;
+        height: 15px;
+    }
+
+    #score {
+        font-size: 16px;
+    }
+}
+
+/* Jump button visible only on mobile/tablet */
+@media (max-width: 768px) {
+    #jumpButton {
+        display: block;
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 15px 25px;
+        font-size: 18px;
+        background: var(--accent-color);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        z-index: 10;
+    }
+}
+
+/* Very small mobile screens */
+@media (max-width: 480px) {
+    #bird {
+        width: 18px;
+        height: 18px;
+        left: 35px;
+    }
+
+    .pipe {
+        width: 35px;
+    }
+
+    .coin {
+        width: 12px;
+        height: 12px;
+    }
+
+    #score {
+        font-size: 14px;
+    }
+
+    #jumpButton {
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+}
