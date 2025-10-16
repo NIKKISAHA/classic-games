@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tank Duel Arcade</title>
+<link rel="stylesheet" href="Top-DownTankBattle.css">
+</head>
+<body>
+<h1>Tank Duel Arcade</h1>
+<h4>Beat all the enemies within 25s</h4>
+
+<div id="scoreBoard">
+  <span id="wins">Wins: 0</span>
+  <span id="losses">Losses: 0</span>
+  <span id="shots">Shots Fired: 0</span>
+  <span id="accuracy">Accuracy: 0%</span>
+  <span id="timer">Time: 30</span>
+  <span id="level">Level: 1</span>
+</div>
+
+<div id="gameArea">
+  <div id="playerTank">
+    <div class="turret"></div>
+    <div class="barrel"></div>
+  </div>
+</div>
+
+<!-- Mobile Controls -->
+<div id="mobileControls">
+  <button id="leftBtn">◀</button>
+  <button id="shootBtn">●</button>
+  <button id="rightBtn">▶</button>
+</div>
+
+<!-- Modal -->
+<div id="resultModal" class="modal">
+  <div class="modal-content">
+    <h2 id="resultMessage"></h2>
+    <p id="scoreMessage"></p>
+    <button id="restartButton">Restart Game</button>
+  </div>
+</div>
+
+<script src="Top-DownTankBattle.js"></script>
+</body>
+</html>
