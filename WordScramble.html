@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timed Word Scramble Challenge</title>
+    <link rel="stylesheet" href="WordScramble.css">
+    <style>
+        /* Define Light Mode (Default) variables */
+        :root {
+            --bg-primary: #f0f2f5;
+            --bg-secondary: #ffffff;
+            --text-color: #333;
+            --accent-color: #007bff;
+            --link-color: #17a2b8;
+            --glow-color: rgba(0, 123, 255, 0.4);
+            --button-text-color: #ffffff;
+            --toggle-color: #333;
+            --input-border: #ccc;
+            --correct-color: #28a745;
+            --incorrect-color: #dc3545;
+            --stats-bg: #e9ecef;
+        }
+
+        /* Define Dark Mode variables */
+        .dark-mode {
+            --bg-primary: #12182b;
+            --bg-secondary: #1a2235;
+            --text-color: #f0f4f8;
+            --accent-color: #55aaff;
+            --link-color: #c9d2ff;
+            --glow-color: rgba(85, 170, 255, 0.8);
+            --button-text-color: #f0f4f8;
+            --toggle-color: #f0f4f8;
+            --input-border: #3c4a6b;
+            --correct-color: #4CAF50;
+            --incorrect-color: #ff6347;
+            --stats-bg: #222b44;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="themeToggle" onclick="toggleTheme()">☀️ Light Mode</button>
+
+        <h1>Word Scramble Challenge 🧠</h1>
+
+        <div class="stats-bar">
+            <p>Score: <span id="score">0</span> / 5</p>
+            <p>Time Left: <span id="timer">20</span>s</p>
+        </div>
+
+        <div class="game-area">
+            <p>Unscramble this word:</p>
+            <h2 id="scrambledWord">Click Start to Play!</h2>
+        </div>
+
+        <div class="input-area">
+            <input type="text" id="guessInput" placeholder="Type your guess here" onkeyup="this.value = this.value.toLowerCase()" disabled>
+            <button id="guessButton" onclick="checkGuess()" disabled>Guess</button>
+        </div>
+
+        <p id="message"></p>
+        
+        <button id="mainControlButton" onclick="startGame()">Start Game</button>
+    </div>
+
+    <div id="gameOverModal" class="modal">
+        <div class="modal-content">
+            <h2 id="modalMessage"></h2>
+            <p id="finalScore"></p>
+            <button onclick="restartGame()">Play Again</button>
+        </div>
+    </div>
+
+    <script src="WordScramble.js"></script>
+</body>
+</html>
