@@ -1,0 +1,47 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Treasure Quest</title>
+  <link rel="stylesheet" href="TreasureQuest.css">
+</head>
+<body>
+  <h1>💎 Treasure Quest</h1>
+  <div id="gameContainer">
+    <canvas id="gameCanvas" width="480" height="480"></canvas>
+  </div>
+  
+  <div class="controls">
+    
+    <div class="move-buttons">
+      <button onclick="move('up')" class="dir-button">⬆️</button>
+      <div class="horizontal-buttons">
+        <button onclick="move('left')" class="dir-button">⬅️</button>
+        <button onclick="move('down')" class="dir-button">⬇️</button>
+        <button onclick="move('right')" class="dir-button">➡️</button>
+      </div>
+    </div>
+    
+    <div class="action-buttons">
+      <button onclick="restartGame()" class="restart">Restart</button>
+      <button onclick="nextLevel()" class="nextLevel">Next Level</button>
+    </div>
+    
+  </div>
+  
+<div id="popup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); display:flex; justify-content:center; align-items:center; z-index:100;">
+  <div style="background:#16243a; color:white; padding:30px; border-radius:10px; text-align:center; min-width:300px;">
+    <h2 id="popupMessage">You Win!</h2>
+    <p id="popupScore">Score: 0</p>
+    <button onclick="closePopup()" style="padding:10px 20px; font-size:16px; cursor:pointer; border:none; border-radius:5px; background: #55aaff;">Restart</button>
+  </div>
+</div>
+
+  <p id="info">Use arrow keys or buttons to move.</p>
+  <script src="TreasureQuest.js"></script>
+</body>
+</html>

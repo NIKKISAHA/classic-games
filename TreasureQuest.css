@@ -1,0 +1,98 @@
+
+body {
+  text-align: center;
+  background: #0e1729;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0; /* Important for full-screen on mobile */
+  padding: 10px;
+}
+
+/* 1. Make the board responsive */
+#gameContainer {
+  display: inline-block;
+  border: 3px solid #ffd166;
+  background: #16243a;
+  
+  /* Make the container fluid, up to its original max size */
+  width: 90vw; /* Take 90% of the viewport width on smaller screens */
+  max-width: 486px; /* 480px canvas + 6px border */
+  margin: 10px auto;
+}
+
+/* Make the canvas element fill its container */
+#gameCanvas {
+  width: 100%;
+  height: auto; /* Ensures the board maintains its 1:1 aspect ratio */
+  display: block;
+}
+
+.controls {
+  margin-top: 10px;
+}
+
+/* 2. Default: Hide directional buttons on large screens (desktop) */
+.move-buttons {
+    display: none;
+}
+
+/* Grouping for horizontal directional buttons */
+.horizontal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Space between the left, down, and right buttons */
+    margin-top: 5px;
+}
+
+/* General button styles */
+button {
+  background:  #55aaff;
+  border: none;
+  color: #111;
+  font-size: 20px;
+  padding: 12px;
+  margin: 3px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+button:active {
+  background:  #6cb5fe;
+}
+
+/* Styles for action buttons (Restart/Next Level) - Always Visible */
+.action-buttons button {
+  font-weight: bold;
+  padding: 10px 20px;
+  margin: 10px 5px;
+}
+button.restart:active {
+  background:  #68b0f8;
+}
+button.nextLevel:active {
+  background:  #6ab4fe;
+}
+
+/* === Media Query: Tablet and Mobile Screens (e.g., up to 1024px width) === */
+@media (max-width: 1024px) {
+    /* 3. Show directional buttons on small screens */
+    .move-buttons {
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    /* Style the directional buttons for better touch targets */
+    .dir-button {
+        background: #55aaff;
+        color: #111;
+        font-size: 28px; /* Larger text/emoji */
+        padding: 4px 3px; /* Large touch area */
+        margin: 0 0 5px 0; /* Adjust margins */
+        display: inline-block;
+        width: 80px; /* Keep a consistent button size */
+    }
+
+    /* Override the generic button margin for the horizontal group */
+    .horizontal-buttons .dir-button {
+        margin: 0;
+    }
+}
