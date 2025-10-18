@@ -1,0 +1,109 @@
+body {
+  text-align: center;
+  background: #111;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  /* Use viewport units for better mobile layout */
+  margin: 0;
+  /* padding: 10px; */
+}
+
+h1 {
+  font-size: 2em; /* Ensure good size for mobile */
+}
+
+p {
+  font-size: 1.1em;
+}
+
+#gameContainer {
+  display: inline-block;
+  margin: 10px auto; /* Center the container */
+  border: 3px solid #ffd166;
+  background: #222;
+  /* Add max-width to prevent the game from being too wide on a desktop, 
+     but let it scale down on mobile */
+  max-width: 350px;
+  width: 95%;
+}
+
+canvas {
+  background: #111;
+  /* Set width to fill the container and height to match (for square aspect ratio) */
+  width: 100%; 
+  height: 100%; /* The HTML canvas element's size attributes (width=480 height=480) ensure it's a perfect square */
+  display: block; /* Removes any default inline margins */
+}
+
+/* Container for the control buttons */
+div:last-of-type { 
+  display: flex;
+  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+  justify-content: center; /* Center the buttons */
+  gap: 10px; /* Space between buttons */
+  margin-bottom: 20px;
+}
+
+button {
+  background: #55aaff;
+  border: none;
+  color: #111;
+  font-size: 18px;
+  padding: 12px 25px; /* Increase padding for better touch target */
+  margin: 5px; /* Reduced margin, using gap on the parent div */
+  border-radius: 8px;
+  cursor: pointer;
+  flex-grow: 1; /* Allow buttons to grow to fill space */
+  max-width: 150px; /* Limit button size */
+}
+
+button:active {
+  background: #6cb5fe;
+}
+
+/* Modal Styling */
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+  padding: 10px; /* Padding for modal content on mobile */
+  box-sizing: border-box;
+}
+
+.modal-content {
+  background: #222;
+  color: #fff;
+  padding: 30px 20px; /* Adjusted padding for better fit on mobile */
+  text-align: center;
+  border-radius: 10px;
+  border: 3px solid #55aaff;
+  max-width: 90%; /* Ensure modal doesn't overflow */
+}
+
+.modal-content p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.modal-content button {
+  background: #55aaff;
+  border: none;
+  color: #111;
+  font-size: 18px;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  /* Reset flex-grow for modal button */
+  flex-grow: 0;
+}
+.modal-content button:active {
+  background: #6cb5fe;
+}

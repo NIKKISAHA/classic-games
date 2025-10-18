@@ -1,0 +1,36 @@
+<!-- LightReflectionPuzzle -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Light Reflection Puzzle</title>
+  <link rel="stylesheet" href="LightReflectionPuzzle.css">
+</head>
+<body>
+  <h1>💡 Light Reflection Puzzle</h1>
+  <p>Rotate mirrors to hit the target! There are 10 levels with 15s, good luck.</p>
+  <div id="gameContainer">
+    <canvas id="gameCanvas" width="280" height="280"></canvas>
+  </div>
+  <!-- <button onclick="resetGame()">Restart</button> -->
+   <div>
+    <button onclick="resetGame()">Restart</button>
+  <button id="nextLevelBtn" onclick="nextLevel()" disabled>Next Level</button>
+  
+  <p id="timer"></p>
+  <p id="info"></p>
+</div>
+  <p id="info"></p>
+  <!-- Modal for Win/Lose -->
+<div id="gameModal" class="modal">
+  <div class="modal-content">
+    <p id="modalMessage"></p>
+    <button id="restartBtn">Restart</button>
+  </div>
+</div>
+  <script src="LightReflectionPuzzle.js"></script>
+</body>
+</html>
