@@ -1,3 +1,4 @@
+
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
@@ -12,7 +13,7 @@ let level = 1;
 let gameOver = false;
 let enemySpeed = 700; // initial enemy move interval in ms
 let enemyIntervals = [];
-const maxLevel = 5; // maximum levels
+const maxLevel = 2; // maximum levels
 
 // Initialize game for current level
 function initGame() {
@@ -42,6 +43,9 @@ function initGame() {
 
   player = { x: 0, y: 0 };
   gameOver = false;
+  
+  // FIX: Ensure the popup is hidden when the game initializes
+  hidePopup(); 
 
   document.getElementById("info").innerText = `Level ${level}: Collect all treasures!`;
   draw();
@@ -185,6 +189,11 @@ function nextLevel() {
   }
 }
 
+// New function to explicitly hide the popup
+function hidePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+
 // Popup functions
 function showPopup(message) {
   const popup = document.getElementById("popup");
@@ -194,7 +203,7 @@ function showPopup(message) {
 }
 
 function closePopup() {
-  document.getElementById("popup").style.display = "none";
+  hidePopup(); // Use the new function to hide the popup
   restartGame();
 }
 
