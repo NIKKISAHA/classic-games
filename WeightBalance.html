@@ -1,0 +1,51 @@
+<!-- GolfGame -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weight Balance Puzzle</title>
+    <link rel="stylesheet" href="GolfGame.css">
+</head>
+<body>
+
+    <h1>Weight Balance Puzzle</h1>
+<div class="info-bar">
+    <h2 id="level-display">Level 1</h2>
+    <h2 id="timer">Time: 10s</h2>
+</div>
+<p> Once a weight got picked up you have to place it either on the left pan or on the right pan.</p>
+<div id="game-message">Balance the scale in time!</div>
+<div id="target-display">Target: 0kg</div>
+
+<div class="scale-container">
+    <div class="scale-base"></div>
+    <div class="scale-beam" id="scale-beam">
+        <div class="scale-pan left-pan" id="left-pan">
+            <h2>Left Pan</h2>
+        </div>
+        <div class="scale-pivot"></div>
+        <div class="scale-pan right-pan" id="right-pan">
+            <h2>Right Pan</h2>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+    <h2>Available Weights</h2>
+    <div class="weights-area" id="weights-area">
+        <div class="weight" data-weight="1" draggable="true">1kg</div>
+        <div class="weight" data-weight="3" draggable="true">3kg</div>
+        <div class="weight" data-weight="5" draggable="true">5kg</div>
+        <div class="weight" data-weight="7" draggable="true">7kg</div>
+        <div class="weight" data-weight="10" draggable="true">10kg</div>
+    </div>
+    <button id="restart-btn">Restart Game</button>
+
+
+    <script src="GolfGame.js"></script>
+</body>
+</html>
+
