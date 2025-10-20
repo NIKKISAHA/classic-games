@@ -1,0 +1,35 @@
+<!-- RopeCutter -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emoji Catcher Game</title>
+  <link rel="stylesheet" href="EmojiCatcher.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <h1>Emoji Catcher 🎯</h1>
+  
+  <canvas id="gameCanvas" width="400" height="500"></canvas>
+  
+  <div id="game-status-modal" class="modal">
+    <div class="modal-content">
+      <p id="modal-message"></p>
+      <button id="restart-btn">Restart Game</button>
+    </div>
+  </div>
+  
+  <div id="score">To clear each level, you have to catch 10 emojis.</div>
+  
+  <div id="mobile-controls">
+    <button id="left-btn" class="control-btn">◀</button>
+    <button id="right-btn" class="control-btn">▶</button>
+  </div>
+  
+  <script src="EmojiCatcher.js"></script>
+</body>
+</html>
+
+

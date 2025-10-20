@@ -1,0 +1,197 @@
+/* --- CSS Variables (Dark/Glow Theme) --- */
+:root {
+    --bg-primary: #12182b;
+    --bg-secondary: #1a2235;
+    --text-color: #f0f4f8;
+    --accent-color: #55aaff;
+    --link-color: #c9d2ff;
+    --glow-color: rgba(85, 170, 255, 0.8); /* Re-added glow-color for modal/title effects */
+    --button-text-color: #f0f4f8;
+    --toggle-color: var(--text-color);
+}
+
+/* --- Global & Body Styles --- */
+body {
+    margin: 0;
+    font-family: 'Roboto Mono', monospace; /* Techy font */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: var(--bg-primary); 
+    color: var(--text-color);
+    padding-bottom: 90px; /* Space for fixed mobile controls */
+}
+
+h1 {
+    /* Adjusted margin to bring title up without being too extreme */
+    margin-top: 15px; 
+    color: var(--accent-color);
+    text-shadow: 0 0 5px var(--glow-color); 
+}
+
+/* --- Game Canvas --- */
+#gameCanvas {
+    /* Modern, clean border */
+    border: 1px solid var(--accent-color); 
+    background: var(--bg-secondary); 
+    border-radius: 10px;
+    /* Deep shadow with accent glow */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 10px var(--glow-color); 
+    display: block;
+    margin-top: 10px; 
+    
+    /* FIX: Canvas Responsiveness */
+    max-width: 100%; /* Ensures it never exceeds the screen width */
+    height: auto;    /* Ensures height scales proportionally */
+}
+
+/* --- Score/Message Display --- */
+#score {
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--text-color);
+    min-height: 25px; 
+    text-align: center;
+}
+
+/* --- Modal Styles (Win/Loss Pop-up) --- */
+.modal { 
+    display: none; 
+    position: fixed; 
+    z-index: 100; 
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.8); /* Darker backdrop */
+}
+
+.modal-content { 
+    background: var(--bg-secondary); 
+    margin: 15% auto; 
+    padding: 30px; 
+    border: 2px solid var(--accent-color); /* Accent border */
+    width: 90%; 
+    max-width: 400px; 
+    text-align: center; 
+    border-radius: 15px; 
+    box-shadow: 0 0 30px var(--glow-color); /* Strong glow effect */
+}
+
+.modal-content p { 
+    font-size: 28px; 
+    font-weight: bold; 
+    color: var(--text-color); 
+    margin-bottom: 25px;
+    text-shadow: 0 0 5px var(--glow-color); 
+}
+
+#restart-btn { 
+    background-color: var(--accent-color); 
+    color: var(--button-text-color); 
+    padding: 15px 30px; 
+    border: none; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    font-size: 20px; 
+    transition: all 0.3s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#restart-btn:hover { 
+    background-color: #66bbff; 
+    box-shadow: 0 0 15px var(--glow-color);
+}
+
+/* --- Mobile Controls (Responsive) --- */
+#mobile-controls {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 400px; 
+    position: fixed; 
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 0;
+    background: rgba(26, 34, 53, 0.95); 
+    border-top: 1px solid var(--accent-color);
+    z-index: 50;
+}
+
+.control-btn {
+    background-color: var(--accent-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 50%; 
+    width: 70px;
+    height: 70px;
+    font-size: 30px;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 0 10px var(--glow-color);
+    transition: transform 0.1s, background-color 0.1s;
+    user-select: none; 
+}
+
+.control-btn:active {
+    transform: scale(0.9);
+    background-color: #66bbff;
+}
+
+/* Hide mobile controls on larger screens (Tablet/Desktop) */
+@media (min-width: 600px) {
+    #mobile-controls {
+        display: none;
+    }
+}
+
+/* --- MOBILE SPECIFIC FIXES --- */
+@media (max-width: 450px) {
+    /* 1. BODY/PADDING FIX */
+    body {
+        padding: 0 5px;
+        /* padding-bottom: 10px; */
+    }
+    
+    /* 2. BUTTON SIZE FIX (Uncommented and applied) */
+    .control-btn {
+        width: 40px; /* Reduced button size */
+        height: 40px;
+        font-size: 20px; /* Reduced icon size */
+    }
+    .modal{
+         display: flex;              /* Flex for centering */
+    justify-content: center;    /* Horizontal center */
+    align-items: center;        /* Vertical center */
+    padding: 10px;              /* Small padding for mobile */
+    box-sizing: border-box;
+    }
+   
+    /* 3. FONT/ELEMENT SCALING */
+    h1 {
+        font-size: 1.5rem;
+        margin-top: 5px; /* Reduced margin to maximize viewport space */
+    }
+    #score {
+        font-size: 16px;
+    }
+    #restart-btn {
+        font-size: 16px;
+        padding: 12px 20px;
+    }
+    .modal-content p {
+        font-size: 20px;
+    }
+    .modal-content {
+        padding: 20px 15px;
+        width: 80%;
+        max-height: 85vh; /* Slightly smaller than viewport */
+    }
+
+
+}
