@@ -1,0 +1,31 @@
+<!-- BreaktheCode -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Break the Code</title>
+    <link rel="stylesheet" href="BreaktheCode.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Break the Code </h1>
+        <p class="detail">Find the hidden word! Guess 10 correct answers in a row to win!</p>
+
+        <div class="clue-container">
+            <p id="clue">Clue will appear here</p>
+        </div>
+
+        <input type="text" id="answer" placeholder="Enter your answer">
+        <button id="submitBtn">Submit</button>
+        <p id="feedback"></p>
+
+        <div id="score">Score: 0</div>
+        <button id="nextBtn" style="display:none;">Next Clue</button>
+        <p id="timer">Time Left: 20s</p>
+    </div>
+
+    <script src="BreaktheCode.js"></script>
+</body>
+</html>
