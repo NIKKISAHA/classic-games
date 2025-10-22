@@ -1,0 +1,126 @@
+:root {
+    --bg-primary: #12182b;
+    --bg-secondary: #1a2235;
+    --text-color: #f0f4f8; /* This is the white/light color */
+    --accent-color: #55aaff;
+    --link-color: #c9d2ff;
+    --glow-color: rgba(85, 170, 255, 0.8);
+    --button-text-color: #f0f4f8; /* This is the white/light color for button text */
+    --toggle-color: var(--text-color);
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+.descrip{
+    font-size: small;
+    margin-top: -20px;
+}
+.container {
+    max-width: 500px;
+    margin: auto;
+    background: var(--bg-secondary);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px var(--glow-color);
+}
+
+h1 {
+    color: var(--accent-color);
+    margin-bottom: 20px;
+}
+
+/* NEW WRAPPER STYLING */
+#flag-display {
+    /* Set a fixed dimension for the flag to be displayed */
+    height: 120px; 
+    width: 180px; /* Standard 3:2 flag aspect ratio */
+    margin: 20px auto;
+    display: block; /* To center the block element */
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--accent-color);
+    border-radius: 5px;
+    box-shadow: 0 0 10px var(--glow-color);
+}
+
+/* Styling for the flag itself (using flag-icon library) */
+.flag-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.option-btn {
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    background: var(--accent-color);
+    color: var(--button-text-color);
+    transition: 0.2s;
+    box-shadow: 0 0 10px var(--glow-color);
+}
+
+.option-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--glow-color);
+}
+
+#score {
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+#restart-btn {
+    padding: 12px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    background: var(--accent-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--glow-color);
+    transition: 0.2s;
+}
+
+#restart-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--glow-color);
+}
+
+/* NEW: Style for the restart button inside the win popup (id is 'restart-win-btn' in JS) */
+#restart-win-btn {
+    padding: 12px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 15px;
+    background: var(--accent-color);
+    color: var(--button-text-color); /* This ensures the text is white/light */
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--glow-color);
+    transition: 0.2s;
+}
+
+#restart-win-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--glow-color);
+}
