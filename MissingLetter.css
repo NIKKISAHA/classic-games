@@ -1,0 +1,226 @@
+/* --- DARK THEME VARIABLES (UNMODIFIED) --- */
+:root {
+    --bg-primary: #12182b;
+    --bg-secondary: #1a2235;
+    --text-color: #f0f4f8;
+    --accent-color: #55aaff;
+    --link-color: #c9d2ff;
+    --glow-color: rgba(85, 170, 255, 0.8);
+    --button-text-color: #f0f4f8;
+    --toggle-color: var(--text-color);
+    --error-color: #ff6666; /* Added for wrong guess messages */
+    --success-color: #66ff66; /* Added for correct guess/win messages */
+}
+
+/* --- BASE STYLES (DESKTOP/LARGE SCREEN) --- */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: var(--bg-primary); 
+    color: var(--text-color);
+}
+
+h1 {
+    color: var(--accent-color);
+    margin-bottom: 30px;
+    font-size: 2.5em; /* Default large size */
+}
+p{
+    text-align: center;
+    margin-top: -7px;
+}
+
+.game-container {
+    background-color: var(--bg-secondary);
+    padding: 30px 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px var(--glow-color);
+    text-align: center;
+    width: 90%; /* Use percentage for flexibility */
+    max-width: 500px; /* Max width constraint */
+}
+
+.score {
+    font-size: 1.1em;
+    color: var(--link-color);
+    margin-bottom: 20px;
+}
+
+.word-display {
+    font-size: 3em; /* Default large size */
+    font-weight: bold;
+    letter-spacing: 15px;
+    margin-bottom: 30px;
+    padding: 10px;
+    background-color: #242c40;
+    border-radius: 5px;
+    color: white; 
+    /* Ensures the word doesn't overflow horizontally */
+    overflow-wrap: break-word; 
+}
+
+#guess-input {
+    padding: 10px;
+    font-size: 1.2em;
+    width: 60px;
+    text-align: center;
+    background-color: var(--bg-primary);
+    color: var(--text-color);
+    border: 2px solid var(--accent-color);
+    border-radius: 5px;
+    margin-right: 10px;
+    text-transform: uppercase;
+}
+
+#submit-button {
+    padding: 10px 20px;
+    font-size: 1.1em;
+    background-color: var(--accent-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#submit-button:hover {
+    background-color: var(--link-color);
+    color: var(--bg-primary);
+}
+
+.message {
+    margin-top: 20px;
+    font-size: 1.1em;
+    min-height: 25px;
+}
+
+/* --- Modal Styles (Unmodified, as they are already responsive) --- */
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+    background-color: var(--bg-secondary);
+    /* margin: 15% auto; - Centering adjusted for smaller screens */
+    margin: 40vh auto; 
+    padding: 30px;
+    border: 1px solid var(--accent-color);
+    width: 60%; /* Wider on mobile */
+    max-width: 400px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 30px var(--glow-color);
+}
+
+#modal-message {
+    color: rgb(255, 255, 255); 
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+#restart-button {
+    padding: 12px 25px;
+    font-size: 1.2em;
+    background-color: #55aaff; 
+    color: var(--bg-primary);
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    box-shadow: 0 0 20px var(--glow-color);
+
+}
+
+#restart-button:hover {
+    background-color: #83c1fe;
+}
+
+/* ============================================================
+           TABLET MEDIA QUERY (Max-width: 768px)
+============================================================
+*/
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+        margin-top: 20px;
+    }
+
+    .game-container {
+        padding: 25px 30px;
+        margin: 20px;
+    }
+
+    .word-display {
+        font-size: 2.5em; /* Slightly smaller on tablets */
+        letter-spacing: 10px; /* Reduced spacing */
+    }
+
+    #guess-input, #submit-button {
+        font-size: 1.1em;
+        padding: 8px 15px;
+    }
+}
+
+/* ============================================================
+           MOBILE MEDIA QUERY (Max-width: 480px)
+============================================================
+*/
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.7em;
+        text-align: center;
+        padding: 0 10px;
+    }
+    
+    .game-container {
+        padding: 20px 15px;
+        width: 95%;
+        box-shadow: 0 0 15px var(--glow-color);
+    }
+
+    .word-display {
+        font-size: 2em; /* Significantly smaller for small phones */
+        letter-spacing: 8px; /* Further reduced spacing */
+        margin-bottom: 25px;
+    }
+
+    /* Stack input and button on very small screens */
+    #guess-input {
+        width: 100%;
+        margin-bottom: 15px;
+        margin-right: 0;
+        box-sizing: border-box; /* Includes padding and border in the element's total width */
+    }
+    
+    #submit-button {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .message {
+        font-size: 1em;
+    }
+    
+    #modal-message {
+        font-size: 1.3em;
+    }
+
+    #restart-button {
+        font-size: 1.1em;
+        padding: 10px 20px;
+    }
+}

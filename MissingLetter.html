@@ -1,0 +1,38 @@
+<!-- MissingLetter -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Missing Letter Game</title>
+    <link rel="stylesheet" href="MissingLetter.css">
+</head>
+<body>
+
+    <h1>Guess the Missing Letter!</h1>
+    <p>Guess 15 words correctly to win! Good luck! </p>
+
+    <div class="game-container">
+        <p class="score">Score: <span id="current-score">0</span> / <span id="win-target">5</span></p>
+        
+        <div class="word-display" id="word-display">_ _ _ _ _</div>
+        
+        <input type="text" id="guess-input" maxlength="1" placeholder="Enter one letter" autofocus>
+        
+        <button id="submit-button">Guess</button>
+        
+        <p class="message" id="message-text"></p>
+    </div>
+
+    <div id="game-over-modal" class="modal">
+        <div class="modal-content">
+            <h2 id="modal-message"></h2>
+            <button id="restart-button">Play Again</button>
+        </div>
+    </div>
+
+    <script src="MissingLetter.js"></script>
+</body>
+</html>
+
