@@ -1,0 +1,126 @@
+:root {
+  --bg-primary: #12182b;
+  --bg-secondary: #1a2235;
+  --text-color: #f0f4f8;
+  --accent-color: #55aaff;
+  --link-color: #c9d2ff;
+  --glow-color: rgba(85, 170, 255, 0.8);
+  --button-text-color: #f0f4f8;
+  --toggle-color: var(--text-color);
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  text-align: center;
+  background: var(--bg-primary);
+  color: var(--text-color);
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  color: var(--text-color);
+  text-shadow: 0 0 6px var(--glow-color);
+}
+
+.scoreboard {
+  margin-bottom: 10px;
+  font-size: 16px;
+  /* Make scoreboard responsive by flexing/wrapping */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+  gap: 10px; /* Space between elements */
+}
+
+.scoreboard br {
+  display: none; /* Hide the <br> tag for cleaner flex layout */
+}
+
+button {
+  margin-left: 0; /* Adjust margin since we are using flex gap */
+  padding: 5px 12px;
+  border: none;
+  background-color: var(--accent-color);
+  color: var(--button-text-color);
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 0 6px var(--glow-color);
+}
+
+button:hover {
+  background-color: #3399ff;
+}
+
+canvas {
+  background-color: var(--bg-secondary);
+  border: 2px solid var(--accent-color);
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 0 12px var(--glow-color);
+  /* Responsive sizing managed by JS, but adding max-width/height here as a safety net */
+  max-width: 95vw;
+  max-height: 95vh;
+}
+
+/* --- Win Modal Styles --- */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 100; /* High z-index to cover everything */
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.8); 
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  background-color: var(--bg-secondary);
+  color: var(--text-color);
+  margin: 25vh auto; /* Center vertically on page */
+  padding: 30px;
+  border: 3px solid var(--accent-color);
+  width: 80%; 
+  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px var(--glow-color);
+}
+
+.modal-content h2 {
+    color: var(--accent-color);
+    font-size: 2.2em;
+    margin-bottom: 15px;
+}
+
+#modalRestartBtn {
+    margin-top: 20px;
+    font-size: 1.1em;
+    padding: 10px 20px;
+}
+
+
+/* --- Mobile Responsiveness (Screen sizes < 600px) --- */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.5em;
+  }
+
+  body {
+    padding: 10px 5px;
+  }
+
+  .scoreboard {
+    flex-direction: column; /* Stack all scoreboard elements vertically */
+    gap: 5px;
+  }
+
+  /* Make sure timer and level labels are clear */
+  #level, #timer {
+      font-size: 1.1em;
+  }
+}

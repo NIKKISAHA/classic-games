@@ -1,0 +1,35 @@
+<!-- ConnectDots -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connect White Dots</title>
+  <link rel="stylesheet" href="ConnectDots.css">
+</head>
+<body>
+  <h1>Connect White Dots — Avoid Blue Dots</h1>
+  <div class="scoreboard">
+    <span id="message">Connect all white dots without touching blue dots! </span><br>
+    <p>Watch out! Gray dots aren’t as innocent as they seem!</p>
+    <span id="level">Level: 1</span>
+    <span id="timer">Time: 30s</span>
+    <button id="resetBtn">Reset</button>
+  </div>
+  <canvas id="gameCanvas" width="480" height="480"></canvas>
+
+  <div id="winModal" class="modal">
+    <div class="modal-content">
+      <h2>🏆 You Win! 🏆</h2>
+      <p>Congratulations! You have successfully completed all levels.</p>
+      <button id="modalRestartBtn">Play Again</button>
+    </div>
+  </div>
+
+  <script src="ConnectDots.js"></script>
+</body>
+</html>
+
+
+
