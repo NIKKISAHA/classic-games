@@ -1,0 +1,194 @@
+:root {
+    --bg-primary: #12182b;
+    --bg-secondary: #1a2235;
+    --text-color: #f0f4f8;
+    --accent-color: #55aaff;
+    --link-color: #c9d2ff;
+    --glow-color: rgba(85, 170, 255, 0.8);
+    --button-text-color: #f0f4f8;
+    --toggle-color: var(--text-color);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Apply dark background and text color from variables */
+    background-color: var(--bg-primary); 
+    color: var(--text-color);
+    margin: 0;
+}
+
+.container {
+    /* Apply dark background for the main card */
+    background: var(--bg-secondary);
+    padding: 30px;
+    border-radius: 8px;
+    /* Add a blue neon glow effect to the box shadow */
+    box-shadow: 0 0 10px var(--accent-color), 0 0 20px var(--glow-color);
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.prompt-text {
+    /* Background for the text prompt area */
+    background: #0d1222; /* Slightly darker than secondary background */
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    text-align: left;
+    line-height: 1.6;
+    /* Ensure text in prompt is the primary text color */
+    color: var(--text-color);
+    border: 1px solid var(--accent-color);
+}
+
+/* Style the individual characters inside the prompt-text */
+.prompt-text span {
+    color: var(--text-color);
+}
+
+#text-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    /* Match input field to the dark theme */
+    background-color: var(--bg-primary); 
+    color: var(--text-color); 
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: none;
+    font-size: 1em;
+    outline: none;
+}
+
+#text-input:focus {
+    /* Add subtle glow on focus */
+    box-shadow: 0 0 5px var(--accent-color);
+}
+
+#start-btn {
+    padding: 10px 20px;
+    /* Use accent color for primary button */
+    background-color: var(--accent-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+#start-btn:hover {
+    background-color: #4499ee; /* Slightly darker on hover */
+    box-shadow: 0 0 8px var(--glow-color);
+}
+
+.info {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+/* Styles for highlighting text correctness (Key visual feedback) */
+.correct { 
+    color: #4CAF50 !important; /* Green for correct */
+}
+.incorrect { 
+    background-color: rgba(255, 0, 0, 0.2); /* Subtle red highlight */
+    color: #FF6347 !important; /* Tomato red text for incorrect */
+    border-bottom: 1px dashed #FF6347;
+}
+.current { 
+    /* Highlight the character the user needs to type next */
+    background-color: var(--accent-color);
+    color: var(--bg-primary) !important; /* Dark text on bright highlight */
+    border-radius: 2px;
+    padding: 1px 0;
+    transition: background-color 0.1s;
+}
+
+#message {
+    margin-top: 15px;
+    font-weight: bold;
+    color: var(--link-color);
+}
+
+
+/* --- Modal Styles (Updated for Dark Theme) --- */
+
+.modal {
+    /* No change needed here for functionality */
+    display: none; 
+    position: fixed; 
+    z-index: 10; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.8); /* Darker opacity for better focus */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    /* Use dark theme for modal content */
+    background-color: var(--bg-secondary);
+    color: var(--text-color);
+    margin: 15% auto;
+    padding: 30px;
+    border: 1px solid var(--accent-color);
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 15px var(--glow-color); /* Neon glow for modal */
+    animation: fadeIn 0.3s;
+}
+
+#modal-title {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: var(--accent-color); /* Highlight title with accent color */
+}
+
+#modal-wpm {
+    font-size: 1.5em;
+    color: #00ff7f; /* Bright green for WPM score */
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+#modal-time-msg {
+    margin-bottom: 25px;
+}
+
+#modal-play-again-btn {
+    padding: 10px 20px;
+    background-color: #00ff7f; /* Bright green for the main action button */
+    color: var(--bg-secondary); /* Dark text on bright button */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+#modal-play-again-btn:hover {
+    background-color: #00cd68;
+    box-shadow: 0 0 10px #00ff7f;
+}
+
+/* Optional animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
