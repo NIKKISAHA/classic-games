@@ -1,0 +1,198 @@
+/* Define color variables for both themes */
+:root {
+    /* Light Theme Defaults */
+    --bg-page-start: #a8edea;
+    --bg-page-end: #fed6e3;
+    --bg-primary: white;
+    --bg-secondary: #f3f3f3;
+    --text-color: #12182b;
+    --accent-color: #6c63ff;
+    --accent-hover: #d6d4fd;
+    --correct-color: #a3e4a3;
+    --wrong-color: #f7a8a8;
+    --button-text-color: white;
+    --shadow-color: rgba(0,0,0,0.2);
+
+    /* --- New Popup Theme Variables (Light) --- */
+    --popup-bg-start: #f093fb;
+    --popup-bg-end: #fbc2c9;
+    --popup-text-color: #fff;
+    --popup-button-bg: #fff;
+    --popup-button-text: #f5576c;
+}
+
+.dark-theme {
+    /* Dark Theme Overrides */
+    --bg-page-start: #131925;
+    --bg-page-end: #1a2235;
+    --bg-primary: #1a2235;
+    --bg-secondary: #12182b;
+    --text-color: #f0f4f8;
+    --accent-color: #55aaff;
+    --accent-hover:  #55aaff;
+    --correct-color: #4CAF50;
+    --wrong-color: #FF5252;
+    --button-text-color: #12182b;
+    --shadow-color: rgba(85, 170, 255, 0.3);
+
+    /* --- New Popup Theme Variables (Dark) --- */
+    --popup-bg-start: #1a2235; /* Dark background */
+    --popup-bg-end: #12182b;
+    --popup-text-color: #f0f4f8; /* Light text */
+    --popup-button-bg: #55aaff; /* Accent button */
+    --popup-button-text: #12182b; /* Dark text on button */
+}
+
+/* Base Styles using variables */
+/* ... (Keep existing body, quiz-container, h1, #emoji-display, .option-btn, .correct, .wrong, #next-btn, #restart-btn, #result, #score-text, #theme-toggle styles) ... */
+
+/* --- New Streak Popup Styles (Moved from JS) --- */
+#streak-popup {
+    /* Position/Visibility handled by JS, but defined here for fallbacks */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    
+    /* Aesthetic styles using variables */
+    background: linear-gradient(135deg, var(--popup-bg-start) 0%, var(--popup-bg-end) 100%);
+    color: var(--popup-text-color);
+    padding: 40px 60px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 1000; /* Ensure it is on top of everything */
+}
+
+#streak-popup h2 {
+    margin-bottom: 10px;
+    font-size: 2em;
+}
+
+#streak-popup p {
+    margin-bottom: 30px;
+    font-size: 1.2em;
+}
+
+#streak-restart-btn {
+    padding: 12px 25px;
+    font-size: 1em;
+    border: none;
+    border-radius: 50px;
+    background: var(--popup-button-bg);
+    color: var(--popup-button-text);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#streak-restart-btn:hover {
+    filter: brightness(0.9);
+}
+
+/* Base Styles using variables */
+body {
+    background: linear-gradient(135deg, var(--bg-page-start), var(--bg-page-end));
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: var(--text-color); /* Apply text color globally */
+    transition: background 0.5s, color 0.5s;
+}
+
+.quiz-container {
+    background: var(--bg-primary);
+    padding: 2rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    width: 350px;
+    text-align: center;
+    position: relative; /* For the toggle button */
+    transition: background 0.5s, box-shadow 0.5s;
+}
+
+h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+#emoji-display {
+    font-size: 3rem;
+    margin: 1rem 0;
+}
+
+.option-btn {
+    background: var(--bg-secondary);
+    border: none;
+    padding: 0.7rem;
+    margin: 0.5rem 0;
+    width: 100%;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    transition: 0.3s;
+    color: var(--text-color); /* Set option text color */
+}
+
+.option-btn:hover {
+    background: var(--accent-hover);
+}
+
+.correct {
+    background: var(--correct-color) !important;
+}
+
+.wrong {
+    background: var(--wrong-color) !important;
+}
+
+#next-btn, #restart-btn {
+    background: var(--accent-color);
+    color: var(--button-text-color);
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+#next-btn:hover, #restart-btn:hover {
+    background: var(--accent-hover);
+}
+
+#result {
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+#score-text {
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+
+/* Theme Toggle Button Styles */
+#theme-toggle {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--bg-secondary);
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+
+#theme-toggle:hover {
+    box-shadow: 0 0 10px var(--accent-color);
+}
