@@ -1,0 +1,390 @@
+:root{
+  --bg:#0f1724;
+  --card:#0b1220;
+  --accent:#7c3aed;
+  --muted:#94a3b8;
+  --positive:#16a34a;
+  --negative:#ef4444;
+  --glass: rgba(255,255,255,0.03);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:linear-gradient(180deg,var(--bg),#071021 120%);
+  color:#e6eef8;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+}
+
+.app {
+  width:100%;
+  max-width:880px;
+  background:linear-gradient(180deg,var(--card), #071420 140%);
+  border-radius:14px;
+  padding:22px;
+  box-shadow:0 10px 30px rgba(2,6,23,0.6);
+  border:1px solid rgba(255,255,255,0.03);
+}
+
+header{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:12px;
+}
+header h1{font-size:20px;margin:0}
+.controls{display:flex;gap:8px;align-items:center}
+select, button{
+  background:var(--glass);
+  color:inherit;
+  border:1px solid rgba(255,255,255,0.04);
+  padding:8px 10px;
+  border-radius:8px;
+  font-size:14px;
+}
+button.primary{
+  background:linear-gradient(90deg,var(--accent),#5b21b6);
+  border:none;
+  color:white;
+  padding:9px 12px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns: 1fr 320px;
+  gap:18px;
+  align-items:start;
+}
+
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:12px;
+  padding:16px;
+  border:1px solid rgba(255,255,255,0.02);
+}
+
+.question-area{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.prompt{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+
+.big-number{
+  font-size:48px;
+  font-weight:700;
+  letter-spacing:1px;
+}
+.roman{
+  font-size:28px;
+  font-weight:600;
+  color:var(--accent);
+  background:linear-gradient(90deg, rgba(124,58,237,0.12), transparent);
+  padding:6px 10px;
+  border-radius:8px;
+}
+
+.choices{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+
+.choice{
+  padding:12px 10px;
+  border-radius:10px;
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.03);
+  cursor:pointer;
+  font-weight:600;
+  text-align:center;
+  transition:transform .12s ease, box-shadow .12s ease;
+  user-select:none;
+}
+.choice:active{transform:scale(.995)}
+.choice.correct{
+  box-shadow:0 6px 18px rgba(16,185,129,0.08);
+  border-color:rgba(16,185,129,0.25);
+  background:linear-gradient(180deg, rgba(16,185,129,0.06), rgba(16,185,129,0.02));
+  color:var(--positive);
+}
+.choice.wrong{
+  box-shadow:0 6px 18px rgba(239,68,68,0.06);
+  border-color:rgba(239,68,68,0.2);
+  background:linear-gradient(180deg, rgba(239,68,68,0.04), rgba(239,68,68,0.02));
+  color:var(--negative);
+}
+
+.meta{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  font-size:13px;
+  color:var(--muted);
+}
+
+.sidebar{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.stat{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:center;
+}
+.stat strong{font-size:18px}
+
+footer{margin-top:14px;display:flex;justify-content:space-between;gap:12px;align-items:center}
+small{color:var(--muted)}
+
+.leaderboard{
+  margin-top:12px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.lb-row{display:flex;justify-content:space-between;color:var(--muted);font-size:13px}
+
+.hint{
+  margin-top:8px;
+  padding:10px;
+  background:rgba(255,255,255,0.02);
+  border-radius:8px;
+  font-size:13px;
+  color:var(--muted);
+}
+
+/* --- Mobile Optimizations --- */
+@media (max-width: 880px){
+  /* Grid layout changes to single column */
+  .grid{
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Reduce number font size slightly */
+  .big-number{
+    font-size: 40px;
+  }
+
+  /* Sidebar below question */
+  .sidebar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .sidebar .card {
+    flex: 1 1 100%;
+  }
+}
+
+/* --- Small Phones - Revised for better layout --- */
+@media (max-width: 500px){
+  /* Base Adjustments */
+  body {
+    padding: 8px; /* Reduce overall padding */
+    margin-left: -17%;
+  }
+  .app {
+    padding: 12px; /* Reduce internal app padding */
+  }
+
+  /* Header Controls: Simplify and keep title centered */
+  header {
+    flex-direction: column;
+    align-items: center; /* Center the title/logo */
+    gap: 12px;
+    margin-bottom: 16px; /* Increase space below header */
+  }
+  header h1 {
+    font-size: 18px; /* Slightly smaller title */
+  }
+  .controls {
+    width: 100%;
+    /* Use grid to force a 2x2 layout */
+    display: grid; 
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .controls label {
+    display: none; /* Hide label */
+  }
+  .controls select {
+    grid-column: 1 / 3; /* Select box takes full width */
+  }
+
+  /* Question Prompt: Stack vertically and ensure content is centered */
+  .prompt {
+    flex-direction: column;
+    align-items: center; /* Center question number (42) */
+    text-align: center; /* Center the text hint */
+  }
+  
+  .prompt > div:first-child {
+      width: 100%; /* Ensure the number area uses full width to center content */
+  }
+
+  /* Question Metadata (Score/Streak) */
+  .meta {
+    justify-content: center; /* Center the score/streak indicators */
+  }
+
+  /* Roman Answer Display Area: Ensure answer is centered on small screen */
+  .prompt > div:last-child {
+    width: 100%; 
+    min-width: auto;
+    text-align: center !important; 
+    padding-top: 12px;
+    border-top: 1px dashed rgba(255,255,255,0.05);
+  }
+  .prompt label {
+    justify-content: center !important; 
+  }
+  
+  /* Choices: Switch to single column for better readability and tapping */
+  .choices {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .choice {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  /* Footer and Sidebar Adjustments */
+  footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+  }
+  footer > div {
+    width: 100%;
+    justify-content: center; /* Center Explain/Skip buttons */
+  }
+
+  /* Sidebar: Ensure vertical stacking for all cards */
+  .sidebar {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .sidebar .card {
+    width: 100%;
+  }
+}
+/* --- Very Small Screens (phones) --- */
+@media (max-width: 400px){
+    body{
+        padding-top: 190%;
+        padding-left: 8%;
+    }
+  .big-number {
+    font-size: 32px;      /* smaller number */
+    word-break: break-word;
+  }
+  .roman {
+    font-size: 20px;      /* smaller Roman numeral display */
+    padding: 4px 6px;
+  }
+  .hint {
+    font-size: 12px;      /* smaller hint text */
+  }
+  .choice {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+/* --- Modal and Backdrop Styling for Centering and Blur --- */
+
+/* 1. Blur the main app content when the modal is active */
+/* This requires a JavaScript change (see Step 3 below) */
+body.modal-active .app {
+    filter: blur(4px); /* Apply the blur effect */
+    pointer-events: none; /* Prevents user clicks on blurred content */
+    user-select: none;
+    transition: filter 0.3s ease;
+}
+
+/* 2. Container for the Pop-up (The Backdrop) */
+#reset-modal-container {
+    position: fixed; /* Fixed position relative to viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Center the card vertically and horizontally using Flexbox */
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    
+    /* Make the backdrop dark and slightly translucent */
+    background: rgba(7, 16, 33, 0.8); 
+    
+    /* Apply a slight blur to the backdrop itself for a 'frosted glass' effect */
+    backdrop-filter: blur(2px); 
+    
+    z-index: 1000; /* Ensures the modal is on top of everything */
+}
+
+/* 3. Style the Confirmation Card within the backdrop */
+.reset-confirm {
+    /* Set the maximum size of the pop-up */
+    width: 90%;
+    max-width: 380px;
+    
+    /* Override the previous fixed positioning if it was still active */
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+
+    /* Add a deep shadow to make it pop */
+    box-shadow: 0 10px 40px rgba(0,0,0,0.9); 
+    
+    z-index: 1001; /* Ensure the card is above the backdrop */
+}
+/* --- Streak Congratulations Modal Styling --- */
+
+/* Reusing the general modal container style for the streak popup */
+#streak-modal-container {
+    /* Identical to #reset-modal-container to ensure centering and backdrop */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(7, 16, 33, 0.8); 
+    backdrop-filter: blur(2px); 
+    z-index: 1000;
+}
+
+/* Specific styling for the streak card */
+.streak-congrats {
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    padding: 30px 20px;
+    border-color: rgba(16, 185, 129, 0.2); /* Positive accent border */
+    box-shadow: 0 10px 40px rgba(16, 185, 129, 0.4); 
+    z-index: 1001; 
+}

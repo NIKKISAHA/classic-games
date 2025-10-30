@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Roman Numeral Quiz</title>
+<link rel="icon" href="data:," >
+<link rel="stylesheet" href="roman-quiz.css">
+</head>
+<body>
+  <main class="app" role="main" aria-labelledby="title">
+    <header>
+      <h1 id="title">Roman Numeral Quiz</h1>
+      <div class="controls" aria-hidden="false">
+        <label for="difficulty" style="font-size:13px;color:var(--muted)">Difficulty</label>
+        <select id="difficulty" aria-label="Select difficulty">
+          <option value="easy">Easy (1–50)</option>
+          <option value="medium" selected>Medium (1–399)</option>
+          <option value="hard">Hard (1–3999)</option>
+        </select>
+        <button id="newBtn">New Question</button>
+        <button id="resetBtn" class="primary">Reset Score</button>
+      </div>
+    </header>
+
+    <section class="grid">
+      <div class="card question-area" aria-live="polite">
+        <div class="prompt" role="region" aria-label="Question">
+          <div>
+            <div class="meta">
+              <div>Question <strong id="qIndex">0</strong> / Score <strong id="score">0</strong></div>
+              <div>Streak <strong id="streak">0</strong> 🔥</div>
+            </div>
+            <div id="numberToConvert" class="big-number">1</div>
+          </div>
+          <div>
+            <div class="meta" style="margin-bottom:12px">
+              <div style="font-size:18px;font-weight:700">Convert to Roman Numeral</div>
+            </div>
+            <div id="displayRoman" class="big-roman-display">—</div>
+          </div>
+        </div>
+        
+        <div id="choices" class="choices">
+          </div>
+
+        <footer>
+          <small>Use keys 1-4 to select an answer.</small>
+          <div>
+            <button id="explainBtn">Explain</button>
+            <button id="skipBtn">Skip</button>
+          </div>
+        </footer>
+        <div id="explainArea" style="margin-top:12px;display:none" class="hint"></div>
+      </div>
+
+      <aside class="sidebar">
+        <div class="card">
+          <div class="stat"><div>Last Result</div><div id="lastResult">—</div></div>
+          <div class="stat"><div>Difficulty</div><div id="curDifficulty">Medium</div></div>
+          <div class="stat"><div>Correct Answer</div><div id="correctAnswer"></div></div>
+        </div>
+
+        <div class="card">
+          <div style="font-weight:700;margin-bottom:8px">Leaderboard</div>
+          <div class="leaderboard" id="leaderboard">
+            </div>
+          <div style="height:8px"></div>
+          <div style="display:flex;gap:8px">
+            <input id="nameInput" placeholder="Your name" style="flex:1;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit" />
+            <button id="saveScore">Save</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div style="font-weight:700;margin-bottom:8px">Help</div>
+          <div style="color:var(--muted);font-size:13px">
+            Romans used letters to represent numbers. Largest to smallest, with subtraction rules (IV = 4). Max supported: 3999.
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <div id="reset-modal-container" style="display: none;">
+      <div id="resetConfirmCard" class="card reset-confirm">
+          <p style="margin:0 0 10px 0;font-size:15px;color:var(--negative);font-weight:600;">Confirm Reset?</p>
+          <div style="font-size:13px;color:var(--muted);margin-bottom:15px;">This will erase your current score, streak, and saved leaderboard.</div>
+          <div style="display:flex;gap:10px;justify-content:flex-end;">
+              <button id="cancelReset" style="background:var(--glass);">Cancel</button>
+              <button id="confirmReset" class="primary">Confirm Reset</button>
+          </div>
+      </div>
+  </div>
+
+  <div id="streak-modal-container" style="display: none;">
+      <div id="streakCongratsCard" class="card streak-congrats">
+          <p style="font-size:24px;color:var(--positive);font-weight:700;margin-bottom:8px;">
+            🎉 Congratulations! 🎉
+          </p>
+          <p style="font-size:16px;color:var(--muted);margin-bottom:20px;">
+            You hit a <b><i>10-question streak</i></b>! Keep the momentum going!
+          </p>
+          <div style="display:flex;justify-content:flex-end;">
+              <button id="playAgainStreak" class="primary" style="margin-left:auto;">Play Next Question</button>
+          </div>
+      </div>
+  </div>
+  
+<script src="roman-quiz.js"></script>
+</body>
+</html>
