@@ -1,0 +1,37 @@
+<!-- PathDrawingPuzzle -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Path Drawing Puzzle - Advanced</title>
+  <link rel="stylesheet" href="PathDrawingPuzzle.css" />
+</head>
+<body>
+  <h1>🧭 Path Drawing Puzzle</h1>
+  <p>
+    Drag from the <b><i>green start</i></b> to the <b><i>red goal</i></b> without touching obstacles!  
+    <span id="levelDisplay">Level 1</span>
+  </p>
+
+  <canvas id="gameCanvas" width="600" height="450"></canvas>
+
+  <div class="buttons">
+    <button id="resetBtn">Restart</button>
+    <button id="nextBtn" disabled>Next Level</button>
+  </div>
+  <div id="popupContainer" class="hidden">
+    <div id="popupContent">
+        <h2 id="popupTitle"></h2>
+        <p id="popupMessage">You nailed that one! Ready for the next challenge?</p>
+        <button id="popupNextBtn">Next Level</button>
+        <button id="popupResetBtn">Restart</button>
+    </div>
+</div>
+
+  <script src="PathDrawingPuzzle.js"></script>
+</body>
+</html>
+
+
