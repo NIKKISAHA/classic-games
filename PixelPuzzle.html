@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Jigsaw Puzzle</title>
+    <link rel="stylesheet" href="PixelPuzzle.css">
+</head>
+<body class="light-theme"> <div class="container">
+        <h1>Custom Image Puzzle</h1>
+
+        <div class="controls">
+            <input type="file" id="imageUpload" accept="image/*">
+            
+            <select id="levelSelector">
+                <option value="3" selected>Easy (3x3)</option>
+                <option value="4">Medium (4x4)</option>
+                <option value="6">Hard (6x6)</option>
+            </select>
+            
+            <button id="shuffleButton" disabled>Shuffle & Start</button>
+        </div>
+        
+        <div class="game-status">
+            <div id="timerDisplay" class="status-item">Time: 00:00</div>
+            
+            <label class="switch status-item">
+                <input type="checkbox" id="themeToggle">
+                <span class="slider round"></span>
+                <span class="mode-text">Dark</span>
+            </label>
+        </div>
+        <div id="puzzleContainer" class="puzzle-container">
+            <p>Upload an image, select a difficulty, and click Shuffle.</p>
+        </div>
+
+        <div id="message" class="message"></div>
+    </div>
+
+    <script src="PixelPuzzle.js"></script>
+</body>
+</html>

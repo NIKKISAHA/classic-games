@@ -1,0 +1,220 @@
+:root {
+    /* DEFAULT THEME (Dark) */
+    --bg-primary: #12182b;
+    --bg-secondary: #1a2235;
+    --text-color: #f0f4f8;
+    --accent-color: #55aaff;
+    --input-bg: #2c364c;
+    --input-border: #445069;
+    --status-bg: #212a40;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    --button-bg: #007bff;
+    --button-hover: #0056b3;
+    --button-disabled: #445069;
+}
+
+.light-theme {
+    /* LIGHT THEME OVERRIDES */
+    --bg-primary: #f0f4f8;
+    --bg-secondary: #ffffff;
+    --text-color: #12182b;
+    --accent-color: #007bff;
+    --input-bg: #ffffff;
+    --input-border: #ccc;
+    --status-bg: #e9e9e9;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --button-bg: #007bff;
+    --button-hover: #0056b3;
+    --button-disabled: #ccc;
+}
+
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    background-color: var(--bg-primary); /* Use variable */
+    color: var(--text-color); /* Use variable */
+    padding: 10px; 
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+.container {
+    background: var(--bg-secondary); /* Use variable */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px var(--shadow-color); /* Use variable */
+    width: 100%;
+    max-width: 600px; 
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+h1 {
+    text-align: center;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap; 
+}
+
+#imageUpload {
+    flex: 1 1 100%; 
+    padding: 10px;
+    border: 1px solid var(--input-border);
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+#levelSelector {
+    /* NEW: Apply theme variables to selector */
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border: 1px solid var(--input-border);
+}
+
+#levelSelector, #shuffleButton {
+    flex: 1 1 45%; 
+    padding: 10px 15px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+#shuffleButton {
+    background-color: var(--button-bg);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#shuffleButton:hover:not(:disabled) {
+    background-color: var(--button-hover);
+}
+
+#shuffleButton:disabled {
+    background-color: var(--button-disabled);
+    cursor: not-allowed;
+    color: #999; /* Maintain readable color for disabled state */
+}
+
+/* --- NEW: Game Status/Timer/Toggle Styles --- */
+.game-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--status-bg);
+    transition: background-color 0.3s;
+}
+
+.status-item {
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+/* Toggle Switch Styles */
+.switch {
+    position: relative;
+    display: flex; /* Use flex to align toggle and text */
+    align-items: center;
+    width: auto; /* Allow width to shrink */
+    height: 34px;
+    /* FIX: Added a small gap for clarity */
+    gap: 10px; 
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    /* Toggle slider base */
+    position: relative; 
+    width: 60px; /* Fixed width */
+    height: 34px; /* Fixed height */
+    background-color: var(--input-border);
+    cursor: pointer;
+    border-radius: 34px;
+    transition: .4s;
+    flex-shrink: 0; /* Prevents slider from shrinking on small screens */
+}
+
+.slider:before {
+    /* The round circle */
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    border-radius: 50%;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: var(--accent-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.mode-text {
+    /* FIX: Removed fixed margin and let flex handle spacing */
+    color: var(--text-color);
+    font-size: 0.9em; /* Slightly smaller text */
+}
+
+/* --- End Game Status Styles --- */
+
+
+/* Puzzle Container Styles (Responsive) */
+.puzzle-container {
+    width: 100%; 
+    height: auto; 
+    aspect-ratio: 1 / 1; 
+    border: 5px solid var(--input-border);
+    display: grid;
+    gap: 0;
+    margin: 0 auto;
+    background-color: var(--status-bg);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Individual Puzzle Piece Styles */
+.puzzle-piece {
+    border: 1px solid var(--input-border); 
+    box-sizing: border-box;
+    cursor: grab;
+    background-size: 600px 600px; 
+    transition: transform 0.1s, border-color 0.3s; 
+}
+
+.dragging {
+    opacity: 0.7;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px var(--shadow-color);
+    z-index: 1000;
+}
+
+.message {
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 15px;
+    color: var(--accent-color); /* Use accent color for success message */
+    font-weight: bold;
+}
