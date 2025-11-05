@@ -1,0 +1,129 @@
+/* Base styles unchanged */
+:root{
+  --bg:#0b1020;
+  --card:#0f1724;
+  --accent:#6ee7b7;
+  --muted:#94a3b8;
+  --glass: rgba(255,255,255,0.04);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
+
+body{
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(110,231,183,0.06), transparent),
+              radial-gradient(900px 400px at 90% 90%, rgba(59,130,246,0.04), transparent),
+              var(--bg);
+  color:#e6eef8;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px;
+}
+
+.container{
+  width:min(1100px, 98vw); /* Increased max width slightly */
+  height:min(760px, 96vh); /* **CRITICAL: Increased max height to fill viewport** */
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:14px;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+  display:grid;
+  grid-template-columns: 300px 1fr;
+  overflow:hidden;
+}
+
+/* left panel */
+.sidebar{
+  padding:16px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.015), transparent);
+  border-right: 1px solid rgba(255,255,255,0.03);
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  min-width:200px;
+}
+h1{font-size:20px;margin:0 0 6px 0}
+.score-box{background:var(--glass);padding:12px;border-radius:10px;backdrop-filter: blur(6px)}
+.stat{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.controls{display:flex;gap:10px;flex-wrap:wrap}
+button{
+  background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  color:var(--accent);
+  border:1px solid rgba(255,255,255,0.04);
+  padding:12px 16px;border-radius:10px;cursor:pointer;font-weight:600;font-size:15px;
+}
+button.secondary{color:var(--muted);background:transparent;border:1px dashed rgba(255,255,255,0.03)}
+.hint{font-size:13px;color:var(--muted)}
+
+/* right panel: game area */
+.game-area{
+  position:relative;
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+}
+/* **CRITICAL: Canvas must take full width/height of its parent (.game-area)** */
+canvas{width:100%;height:100%;display:block;background:linear-gradient(180deg, rgba(0,0,0,0.03), transparent)} 
+
+/* footer overlay */
+.hud{
+  position:absolute;left:8px;top:8px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;
+}
+.pill{background:rgba(0,0,0,0.35);padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.03);font-weight:600;font-size:13px}
+
+.center-instructions{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;
+}
+.instructions{pointer-events:auto;background:rgba(6,8,14,0.46);padding:14px 18px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);text-align:center;font-size:15px}
+.small{font-size:12px;color:var(--muted);}
+
+/* --- Responsive Optimizations --- */
+
+/* Tablet & Smaller Desktop (Max 1024px) */
+@media (max-width:1024px){
+  .container{
+    grid-template-columns: 1fr; 
+    /* **CRITICAL: Sidebar takes auto height, game-area takes remaining 1fr** */
+    grid-template-rows: auto 1fr; 
+    height: 96vh; /* Ensure it still fills the screen height */
+  } 
+  .sidebar{
+    flex-direction:row; /* Horizontal layout for sidebar content */
+    justify-content:space-around; 
+    align-items:center; 
+    min-width:auto; 
+    padding:10px; 
+    gap:8px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.03); 
+    flex-wrap: wrap; /* Allow wrapping on narrow tablets */
+  }
+  /* Hide verbose text on smaller screens */
+  .sidebar > div:first-child .hint,
+  .sidebar > div:last-child {
+    display:none; 
+  }
+  .score-box{padding:8px; font-size:13px; transform: scale(0.95); margin-right:-10px;}
+  .controls button{padding:10px 12px; font-size:14px;}
+  .hud{top:4px;left:4px;gap:6px;}
+  .pill{padding:4px 8px; font-size:12px;}
+}
+
+/* Smartphone Portrait (Max 640px) */
+@media (max-width:640px){
+  /* **CRITICAL: Switch sidebar to a vertical, single-column layout for phones** */
+  .sidebar{
+    flex-direction:column; 
+    align-items:stretch; /* Stack vertically */
+    gap: 10px;
+  }
+  .sidebar > div:first-child { /* Title */
+    display: block; /* Show title again, but centered */
+    text-align: center;
+  }
+  .score-box{
+    transform: none; /* Reset scaling */
+    margin-right: 0;
+  }
+  .controls{
+    justify-content: space-around;
+  }
+}
