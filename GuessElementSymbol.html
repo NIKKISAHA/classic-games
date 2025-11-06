@@ -1,0 +1,41 @@
+<!-- GuessElementSymbol -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Periodic Table Multiple Choice Quiz</title>
+    <link rel="stylesheet" href="GuessElementSymbol.css">
+</head>
+<body class="dark-theme"> <div class="quiz-container">
+        <button id="theme-toggle-btn">☀️</button>
+        
+        <h1>⚛️ Periodic Table Symbol Quiz</h1>
+        <p>Select the correct chemical <b><i>symbol</i></b> for the element shown.</p>
+        
+        <div id="quiz-area">
+            <h2 id="element-name">Loading...</h2> 
+            
+            <div id="options-container">
+                </div>
+        </div>
+
+        <div id="streak-area">
+            <p>Consecutive Correct: <span id="current-streak">0</span> / 10</p>
+        </div>
+
+        <div id="feedback-area">
+            <p id="feedback-message"></p>
+        </div>
+        
+        <div id="score-area">
+            <p>Total Score: <span id="current-score">0</span> | Total Questions: <span id="total-questions">0</span></p>
+            <button id="next-btn" style="display: none;">Next Element</button>
+            <button id="reset-game-btn" style="display: none;">Play Again</button>
+        </div>
+    </div>
+
+    <script src="GuessElementSymbol.js"></script>
+</body>
+</html>
