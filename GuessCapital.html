@@ -1,0 +1,39 @@
+<!-- GuessCapital -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>World Capitals Quiz</title>
+  <link rel="stylesheet" href="GuessCapital.css" />
+</head>
+<body class="dark-theme">
+  <div class="quiz-container">
+    <button id="theme-toggle-btn">☀️</button>
+
+    <h1>🌍 Country Capitals Quiz</h1>
+    <p>Select the correct <b><i>capital city</i></b> for the given country.</p>
+
+    <div id="quiz-area">
+      <h2 id="country-name">Loading...</h2>
+      <div id="options-container"></div>
+    </div>
+
+    <div id="streak-area">
+      <p>Consecutive Correct: <span id="current-streak">0</span> / 10</p>
+    </div>
+
+    <div id="feedback-area">
+      <p id="feedback-message"></p>
+    </div>
+
+    <div id="score-area">
+      <p>Total Score: <span id="current-score">0</span> | Total Questions: <span id="total-questions">0</span></p>
+      <button id="next-btn" style="display: none;">Next Country</button>
+      <button id="reset-game-btn" style="display: none;">Play Again</button>
+    </div>
+  </div>
+
+  <script src="GuessCapital.js"></script>
+</body>
+</html>
