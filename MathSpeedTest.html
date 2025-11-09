@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Math Speed Test</title>
+  <link rel="stylesheet" href="MathSpeedTest.css" />
+</head>
+<body class="dark-theme">
+  <div class="quiz-container">
+    <button id="theme-toggle-btn">☀️</button>
+
+    <h1>🧮 Math Speed Test</h1>
+    <p>Solve the equation before the timer ends!</p>
+
+    <div id="quiz-area">
+      <h2 id="question-text">Loading...</h2>
+      <div id="options-container"></div>
+      <p id="timer-text">⏳ Time Left: <span id="time-left">10</span>s</p>
+    </div>
+
+    <div id="streak-area">
+      <p>Consecutive Correct: <span id="current-streak">0</span> / 10</p>
+    </div>
+
+    <div id="feedback-area">
+      <p id="feedback-message"></p>
+    </div>
+
+    <div id="score-area">
+      <p>Total Score: <span id="current-score">0</span> | Total Questions: <span id="total-questions">0</span></p>
+      <button id="next-btn" style="display: none;">Next Question</button>
+      <button id="reset-game-btn" style="display: none;">Play Again</button>
+    </div>
+  </div>
+
+  <script src="MathSpeedTest.js"></script>
+</body>
+</html>
