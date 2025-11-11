@@ -1,0 +1,32 @@
+<!-- singingApp -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>JS Pitch Detector — Fixed</title>
+  <link rel="stylesheet" href="singingApp.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🎤 JS Pitch Detector</h1>
+    <button id="startBtn">Start Microphone</button>
+
+    <div class="display">
+      <p>Note: <span id="note">--</span></p>
+      <p>Frequency: <span id="freq">-- Hz</span></p>
+      <p>MIDI #: <span id="midi">--</span></p>
+    </div>
+
+    <div class="tuner">
+      <div class="needle" id="needle"></div>
+      <div class="center-line"></div>
+    </div>
+
+    <p class="tip">Sing or play an instrument. Try A4 (440 Hz) to verify tuning.</p>
+  </div>
+
+  <script src="singingApp.js"></script>
+</body>
+</html>
